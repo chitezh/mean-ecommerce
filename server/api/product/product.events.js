@@ -1,11 +1,11 @@
-/**
+ /**
  * Product model events
  */
 
 'use strict';
 
 var EventEmitter = require('events').EventEmitter;
-var Product = require('./product.model');
+var Product = require('./product.model').product;
 var ProductEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)

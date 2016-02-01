@@ -12,7 +12,8 @@ var ImageSchema = new Schema({
     contentType: String
   },
   featured: {
-    type: Boolean
+    type: Boolean,
+    default: false
   }
 });
 
@@ -64,10 +65,29 @@ var ProductSchema = new Schema({
     type: Number,
     default: 1
   },
+  imageUrl: {
+    type: String
+  },
+  imageBin: {
+    data: Buffer,
+    contentType: String
+  },
   description: String,
-  images: [ImageSchema],
-  variants: [VariantSchema],
-  reviews: [ReviewSchema],
+  images: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Image',
+    index: true
+  }],
+  variants: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Variant',
+    index: true
+  }],
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Review',
+    index: true
+  }],
   categories: [{
     type: Schema.Types.ObjectId,
     ref: 'Catalog',
@@ -78,4 +98,9 @@ var ProductSchema = new Schema({
   'description': 'text'
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = {
+  product: mongoose.model('Product', ProductSchema),
+  variant: mongoose.model('Variant', VariantSchema),
+  image: mongoose.model('Image', ImageSchema),
+  review: mongoose.model('Review', ReviewSchema)
+}

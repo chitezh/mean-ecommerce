@@ -10,9 +10,14 @@
 'use strict';
 
 var _ = require('lodash');
-var Product = require('./product.model');
-var path = require('path');
+
+
+var Product = require('./product.model').product;
+var Image = require('./product.model').image;
+var Variant = require('./product.model').Variant;
+var Review = require('./product.model').review;
 var Catalog = require('../catalog/catalog.model');
+var path = require('path');
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -62,8 +67,8 @@ function removeEntity(res) {
   };
 }
 
-function saveFile(res, file) {
-  return function(entity){
+function saveFeaturedImage(res, file) {
+  return function(entity) {
     var newPath = '/assets/uploads/' + path.basename(file.path);
     entity.imageUrl = newPath;
     return entity.saveAsync().spread(function(updated) {
@@ -75,7 +80,11 @@ function saveFile(res, file) {
 function productsInCategory(catalog) {
   var catalog_ids = [catalog._id].concat(catalog.children);
   return Product
-    .find({'categories': { $in: catalog_ids } })
+    .find({
+      'categories': {
+        $in: catalog_ids
+      }
+    })
     .populate('categories')
     .exec();
 }
@@ -122,23 +131,25 @@ exports.destroy = function(req, res) {
     .catch(handleError(res));
 };
 
-// Uploads a new Product's image in the DB
+// Uploads a new Product's featured image in the DB
 exports.upload = function(req, res) {
   var file = req.files.file;
-  if(!file){
+  if (!file) {
     return handleError(res)('File not provided');
   }
 
   Product.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
-    .then(saveFile(res, file))
+    .then(saveFeaturedImage(res, file))
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
 
 exports.catalog = function(req, res) {
   Catalog
-    .findOne({ slug: req.params.slug })
+    .findOne({
+      slug: req.params.slug
+    })
     .execAsync()
     .then(productsInCategory)
     .then(responseWithResult(res))
@@ -147,10 +158,140 @@ exports.catalog = function(req, res) {
 
 exports.search = function(req, res) {
   Product
-    .find({ $text: { $search: req.params.term }})
+    .find({
+      $text: {
+        $search: req.params.term
+      }
+    })
     .populate('categories')
     .execAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
 
+/*images*/
+function linkImageProduct(res, productId) {
+  return function(entity) {
+    var image = entity;
+    return Product.findByIdAsync(req.params.id)
+      .then(handleEntityNotFound(res))
+      .then(function(entity) {
+        entity.images.push(image._id);
+        return entity.saveAsync().spread(function() {
+          return image;
+        });
+      })
+  }
+}
+
+function getImages(res) {
+  return function(entity) {
+    if (entity) {
+      var images = _.map(entity.images, function(imageId) {
+        return Image.findByIdAsync(imageId)
+          .then(handleEntityNotFound(res));
+      })
+      return Promise.all(images);
+    } else {
+      return null;
+    }
+  }
+}
+
+function saveImageUpdates(res, file) {
+  return function(entity) {
+    var newPath = '/assets/uploads/' + path.basename(file.path);
+    var updated = _.merge(entity, {
+      imageUrl: newPath
+    });
+    
+    return updated.saveAsync()
+      .spread(function(updated) {
+        return updated;
+      });
+  };
+}
+
+// Uploads a new Product's other images image in the DB
+exports.uploadImage = function(req, res) {
+  var file = req.files.file;
+  if (!file) {
+    return handleError(res)('File not provided');
+  }
+
+  var newPath = '/assets/uploads/' + path.basename(file.path);
+
+  Image.createAsync({
+      imageUrl: newPath
+    }).then(linkImageProduct(res, req.params.id))
+    .then(responseWithResult(res, 201))
+    .catch(handleError(res));
+};
+
+// Gets images for a single Product from the DB
+exports.indexImage = function(req, res) {
+  Product.findByIdAsync(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(getImages(res))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
+// Updates an existing Product image in the DB
+exports.updateImage = function(req, res) {
+  var file = req.files.file;
+  if (!file) {
+    return handleError(res)('File not provided');
+  }
+
+  Image.findByIdAsync(req.params.image_id)
+    .then(handleEntityNotFound(res))
+    .then(saveImageUpdates(res, file))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
+/*Variants*/
+function getVariants(res) {
+  return function(entity) {
+    if (entity) {
+      var variants = _.map(entity.variants, function(variantId) {
+        return Variant.findByIdAsync(variantId)
+          .then(handleEntityNotFound(res));
+      })
+      return Promise.all(variants);
+    } else {
+      return null;
+    }
+  }
+}
+
+function linkVariantProduct(res, productId) {
+  return function(entity) {
+    var variant = entity;
+    return Product.findByIdAsync(productId)
+      .then(handleEntityNotFound(res))
+      .then(function(entity) {
+        entity.variants.push(variant._id);
+        return entity.saveAsync().spread(function() {
+          return variant;
+        });
+      })
+  }
+}
+
+exports.createVariant = function() {
+  Variant.createAsync(req.body)
+    .then(linkVariantProduct(res, req.params.id))
+    .then(responseWithResult(res, 201))
+    .catch(handleError(res));
+}
+
+// Gets variants for a single Product from the DB
+exports.indexVariant = function(req, res) {
+  Product.findByIdAsync(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(getVariants(res))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
