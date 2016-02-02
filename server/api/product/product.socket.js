@@ -4,7 +4,7 @@
 
 'use strict';
 
-var ProductEvents = require('./product.events');
+var ProductEvents = require('./product.events').product;
 
 // Model events to emit
 var events = ['save', 'remove'];

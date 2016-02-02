@@ -28,11 +28,15 @@ router.put('/:id/images/:image_id', controller.updateImage);
 // Variants
 router.post('/:id/variants', controller.createVariant);
 router.get('/:id/variants', controller.indexVariant);
-/*router.get('/', controller.index);
-router.get('/:id', controller.show);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);*/
+router.put('/:id/variants/:variant_id', controller.updateVariant);
+router.patch('/:id/variants/:variant_id', controller.updateVariant);
+router.delete('/:id/variants/:variant_id', controller.destroyVariant);
+
+// Reviews
+router.post('/:id/reviews', controller.createReview);
+router.get('/:id/reviews', controller.indexReview);
+router.put('/:id/reviews/:review_id', controller.updateReview);
+router.patch('/:id/reviews/:review_id', controller.updateReview);
+
 
 module.exports = router;

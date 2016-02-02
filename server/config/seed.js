@@ -8,9 +8,11 @@
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Product = require('../api/product/product.model').product;
+var Variant = require('../api/product/product.model').variant;
+var Review = require('../api/product/product.model').review;
 var Image = require('../api/product/product.model').image;
 var Catalog = require('../api/catalog/catalog.model');
-var mainCatalog, home, books, clothing;
+var mainCatalog, home, books, clothing, variant, review;
 
 Thing.find({}).removeAsync()
   .then(() => {
@@ -95,6 +97,17 @@ Catalog
     return Product.find({}).remove({});
   })
   .then(function() {
+    Variant.find({}).remove({});
+    return Variant.create({
+      code: "FG-FG",
+      price: 2000,
+      stock: 113,
+      description: "Black Jeans"
+    });
+  })
+  .then(function(v) {
+    variant = v._id;
+    Image.find({}).remove({});
     return Image.create({
       imageUrl: '/assets/uploads/meanbook.jpg',
     })
@@ -105,6 +118,7 @@ Catalog
       imageUrl: '/assets/uploads/meanbook.jpg',
       price: 25,
       stock: 250,
+      variants: [variant],
       images: [image._id, image._id],
       categories: [books],
       description: 'Build a powerful e-commerce application quickly with MEAN, a leading full-JavaScript stack. It takes you step-by-step from creating a real-world store to managing details such as authentication, shopping carts, payment, scalability and more.'
@@ -113,6 +127,7 @@ Catalog
       imageUrl: '/assets/uploads/meantshirt.jpg',
       price: 15,
       stock: 100,
+      variants: [variant],
       images: [image._id, image._id],
       categories: [clothing],
       description: 'T-shirt with the MEAN stack logo'
@@ -121,6 +136,7 @@ Catalog
       imageUrl: '/assets/uploads/meanmug.jpg',
       price: 8,
       stock: 50,
+      variants: [variant],
       images: [image._id],
       categories: [home],
       description: 'Convert coffee into MEAN code'

@@ -14,7 +14,7 @@ var _ = require('lodash');
 
 var Product = require('./product.model').product;
 var Image = require('./product.model').image;
-var Variant = require('./product.model').Variant;
+var Variant = require('./product.model').variant;
 var Review = require('./product.model').review;
 var Catalog = require('../catalog/catalog.model');
 var path = require('path');
@@ -204,7 +204,7 @@ function saveImageUpdates(res, file) {
     var updated = _.merge(entity, {
       imageUrl: newPath
     });
-    
+
     return updated.saveAsync()
       .spread(function(updated) {
         return updated;
@@ -280,6 +280,17 @@ function linkVariantProduct(res, productId) {
   }
 }
 
+function removeVariantId(variantId, variant) {
+  return function(entity) {
+    var variantIndex = entity.variants.indexOf(variantId);
+    entity.variants.splice(variantIndex, 1);
+    return entity.saveAsync()
+      .then(function() {
+        return variant;
+      });
+  };
+}
+
 exports.createVariant = function() {
   Variant.createAsync(req.body)
     .then(linkVariantProduct(res, req.params.id))
@@ -293,5 +304,113 @@ exports.indexVariant = function(req, res) {
     .then(handleEntityNotFound(res))
     .then(getVariants(res))
     .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+// Updates an existing Variant in the DB
+exports.updateVariant = function(req, res) {
+  if (req.body._id) {
+    delete req.body._id;
+  }
+  Variant.findByIdAsync(req.params.variant_id)
+    .then(handleEntityNotFound(res))
+    .then(saveUpdates(req.body))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
+// Deletes a variant from the DB
+exports.destroyVariant = function(req, res) {
+
+  Variant.findByIdAsync(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(function(entity) {
+      var variant = entity;
+      return Product.findByIdAsync(req.params.id)
+        .then(handleEntityNotFound(res))
+        .then(removeVariantId(req.params.variant_id, variant));
+    })
+    .then(removeEntity(res))
+    .catch(handleError(res));
+};
+
+/*Reviews*/
+function getReviews(res) {
+  return function(entity) {
+    if (entity) {
+      var reviews = _.map(entity.reviews, function(reviewId) {
+        return Review.findByIdAsync(reviewId)
+          .then(handleEntityNotFound(res));
+      })
+      return Promise.all(reviews);
+    } else {
+      return null;
+    }
+  }
+}
+
+function linkReviewProduct(res, productId) {
+  return function(entity) {
+    var review = entity;
+    return Product.findByIdAsync(productId)
+      .then(handleEntityNotFound(res))
+      .then(function(entity) {
+        entity.reviews.push(review._id);
+        return entity.saveAsync().spread(function() {
+          return review;
+        });
+      })
+  }
+}
+
+function removeReviewId(reviewId, review) {
+  return function(entity) {
+    var reviewIndex = entity.reviews.indexOf(reviewId);
+    entity.reviews.splice(reviewIndex, 1);
+    return entity.saveAsync()
+      .then(function() {
+        return review;
+      });
+  };
+}
+
+exports.createReview = function() {
+  Review.createAsync(req.body)
+    .then(linkReviewProduct(res, req.params.id))
+    .then(responseWithResult(res, 201))
+    .catch(handleError(res));
+}
+
+// Gets reviews for a single Product from the DB
+exports.indexReview = function(req, res) {
+  Product.findByIdAsync(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(getReviews(res))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+// Updates an existing Variant in the DB
+exports.updateReview = function(req, res) {
+  if (req.body._id) {
+    delete req.body._id;
+  }
+  Review.findByIdAsync(req.params.review_id)
+    .then(handleEntityNotFound(res))
+    .then(saveUpdates(req.body))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+};
+
+// Deletes a variant from the DB
+exports.destroyReview = function(req, res) {
+
+  Review.findByIdAsync(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(function(entity) {
+      var review = entity;
+      return Product.findByIdAsync(req.params.id)
+        .then(handleEntityNotFound(res))
+        .then(removeReviewId(req.params.review_id, review));
+    })
+    .then(removeEntity(res))
     .catch(handleError(res));
 };
