@@ -14,7 +14,7 @@ class AdminController {
   }
 }
 
-angular.module('sourceApp.admin')
+angular.module('bhcmartApp.admin')
   .controller('AdminController', AdminController);
 
 })();

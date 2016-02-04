@@ -16,6 +16,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  categories: [],
   password: String,
   provider: String,
   salt: String,

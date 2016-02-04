@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sourceApp')
+angular.module('bhcmartApp')
   .directive('footer', function () {
     return {
       templateUrl: 'components/footer/footer.html',

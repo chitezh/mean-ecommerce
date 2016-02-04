@@ -27,5 +27,5 @@ class SettingsController {
   }
 }
 
-angular.module('sourceApp')
+angular.module('bhcmartApp')
   .controller('SettingsController', SettingsController);

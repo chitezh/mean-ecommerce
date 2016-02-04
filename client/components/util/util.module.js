@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('sourceApp.util', []);
+angular.module('bhcmartApp.util', []);

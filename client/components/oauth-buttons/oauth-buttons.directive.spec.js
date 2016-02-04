@@ -3,7 +3,7 @@
 describe('Directive: oauthButtons', function() {
 
   // load the directive's module and view
-  beforeEach(module('sourceApp'));
+  beforeEach(module('bhcmartApp'));
   beforeEach(module('components/oauth-buttons/oauth-buttons.html'));
 
   var element, parentScope, elementScope;

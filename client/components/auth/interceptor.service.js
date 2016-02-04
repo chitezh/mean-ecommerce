@@ -26,7 +26,7 @@ function authInterceptor($rootScope, $q, $cookies, $injector, Util) {
   };
 }
 
-angular.module('sourceApp.auth')
+angular.module('bhcmartApp.auth')
   .factory('authInterceptor', authInterceptor);
 
 })();

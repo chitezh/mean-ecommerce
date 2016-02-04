@@ -21,7 +21,7 @@ function UserResource($resource) {
   });
 }
 
-angular.module('sourceApp.auth')
+angular.module('bhcmartApp.auth')
   .factory('User', UserResource);
 
 })();

@@ -61,5 +61,5 @@
    product: ProductEvents,
    image: ImageEvents,
    review: ReviewEvents,
-   variant: ReviewEvents
+   variant: VariantEvents
  };

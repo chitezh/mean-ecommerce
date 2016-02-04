@@ -30,7 +30,7 @@ class MainController {
   }
 }
 
-angular.module('sourceApp')
+angular.module('bhcmartApp')
   .controller('MainController', MainController);
 
 })();

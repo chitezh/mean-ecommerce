@@ -183,7 +183,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
   return Auth;
 }
 
-angular.module('sourceApp.auth')
+angular.module('bhcmartApp.auth')
   .factory('Auth', AuthService);
 
 })();

@@ -6,7 +6,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/source-dev'
+    uri: 'mongodb://localhost/bhcmart-dev'
   },
 
   // Seed database on startup

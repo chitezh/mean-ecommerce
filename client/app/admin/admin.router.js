@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sourceApp.admin')
+angular.module('bhcmartApp.admin')
   .config(function($stateProvider) {
     $stateProvider
       .state('admin', {

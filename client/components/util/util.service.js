@@ -53,7 +53,7 @@ function UtilService($window) {
   return Util;
 }
 
-angular.module('sourceApp.util')
+angular.module('bhcmartApp.util')
   .factory('Util', UtilService);
 
 })();

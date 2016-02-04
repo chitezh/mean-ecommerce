@@ -39,5 +39,5 @@ class SignupController {
   }
 }
 
-angular.module('sourceApp')
+angular.module('bhcmartApp')
   .controller('SignupController', SignupController);

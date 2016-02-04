@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sourceApp')
+angular.module('bhcmartApp')
   .directive('navbar', () => ({
     templateUrl: 'components/navbar/navbar.html',
     restrict: 'E',

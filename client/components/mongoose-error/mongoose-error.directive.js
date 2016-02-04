@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('sourceApp')
+angular.module('bhcmartApp')
   .directive('mongooseError', function() {
     return {
       restrict: 'A',
