@@ -1,5 +1,5 @@
 var Catalog = require('./catalog.model');
-var Product = require('../product/product.model');
+var Product = require('../product/product.model').product;
 
 describe('Product+Catalog', function() {
   var root, books, food, furniture;

@@ -170,7 +170,7 @@ exports.search = function(req, res) {
 };
 
 /*images*/
-function linkImageProduct(res, productId) {
+function linkImageProduct(req, res, productId) {
   return function(entity) {
     var image = entity;
     return Product.findByIdAsync(req.params.id)
@@ -223,7 +223,7 @@ exports.uploadImage = function(req, res) {
 
   Image.createAsync({
       imageUrl: newPath
-    }).then(linkImageProduct(res, req.params.id))
+    }).then(linkImageProduct(req, res, req.params.id))
     .then(responseWithResult(res, 201))
     .catch(handleError(res));
 };
@@ -291,7 +291,7 @@ function removeVariantId(variantId, variant) {
   };
 }
 
-exports.createVariant = function() {
+exports.createVariant = function(req, res) {
   Variant.createAsync(req.body)
     .then(linkVariantProduct(res, req.params.id))
     .then(responseWithResult(res, 201))
@@ -373,7 +373,7 @@ function removeReviewId(reviewId, review) {
   };
 }
 
-exports.createReview = function() {
+exports.createReview = function(req, res) {
   Review.createAsync(req.body)
     .then(linkReviewProduct(res, req.params.id))
     .then(responseWithResult(res, 201))

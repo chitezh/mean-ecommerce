@@ -47,10 +47,14 @@ export function create(req, res, next) {
   newUser.role = 'user';
   newUser.saveAsync()
     .spread(function(user) {
-      var token = jwt.sign({ _id: user._id }, config.secrets.session, {
+      var token = jwt.sign({
+        _id: user._id
+      }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
-      res.json({ token });
+      res.json({
+        token
+      });
     })
     .catch(validationError(res));
 }
@@ -112,7 +116,9 @@ export function changePassword(req, res, next) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  User.findOneAsync({ _id: userId }, '-salt -password')
+  User.findOneAsync({
+      _id: userId
+    }, '-salt -password')
     .then(user => { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();
@@ -130,11 +136,11 @@ export function authCallback(req, res, next) {
 }
 
 /**
-* Add category authorization
-*/
+ * Add category authorization
+ */
 export function authorize(req, res, next) {
-  var userId = req.params._id;
-  categoryId = req.body.categoryId;
+  var userId = req.params._id,
+    categoryId = req.body.categoryId;
 
   User.findByIdAsync(userId)
     .then(user => {
@@ -148,11 +154,11 @@ export function authorize(req, res, next) {
 }
 
 /**
-* Remove category authorization
-*/
+ * Remove category authorization
+ */
 export function deAuthorize(req, res, next) {
-  var userId = req.params._id;
-  categoryId = req.params.cat_id;
+  var userId = req.params._id,
+    categoryId = req.params.cat_id;
 
   User.findByIdAsync(userId)
     .then(user => {
