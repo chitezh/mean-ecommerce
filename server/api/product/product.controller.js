@@ -198,7 +198,7 @@ function getImages(res) {
   }
 }
 
-function saveImageUpdates(res, file) {
+function saveImageUpdates(file) {
   return function(entity) {
     var newPath = '/assets/uploads/' + path.basename(file.path);
     var updated = _.merge(entity, {
@@ -246,7 +246,7 @@ exports.updateImage = function(req, res) {
 
   Image.findByIdAsync(req.params.image_id)
     .then(handleEntityNotFound(res))
-    .then(saveImageUpdates(res, file))
+    .then(saveImageUpdates(file))
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
