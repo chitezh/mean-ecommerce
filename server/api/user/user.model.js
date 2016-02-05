@@ -16,7 +16,11 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
-  categories: [],
+  categories: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Catalog',
+    index: true
+  }],
   password: String,
   provider: String,
   salt: String,

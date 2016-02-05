@@ -128,3 +128,39 @@ export function me(req, res, next) {
 export function authCallback(req, res, next) {
   res.redirect('/');
 }
+
+/**
+* Add category authorization
+*/
+export function authorize(req, res, next) {
+  var userId = req.params._id;
+  categoryId = req.body.categoryId;
+
+  User.findByIdAsync(userId)
+    .then(user => {
+      user.categories.push(categoryId);
+      return user.saveAsync()
+        .then(() => {
+          res.status(204).end();
+        })
+        .catch(validationError(res));
+    });
+}
+
+/**
+* Remove category authorization
+*/
+export function deAuthorize(req, res, next) {
+  var userId = req.params._id;
+  categoryId = req.params.cat_id;
+
+  User.findByIdAsync(userId)
+    .then(user => {
+      user.categories.splice(user.categories.indexOf(categoryId), 1);
+      return user.saveAsync()
+        .then(() => {
+          res.status(204).end();
+        })
+        .catch(validationError(res));
+    });
+}
