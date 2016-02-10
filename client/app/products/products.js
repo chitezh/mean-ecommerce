@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sourceApp')
+angular.module('bhcmartApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('products', {
