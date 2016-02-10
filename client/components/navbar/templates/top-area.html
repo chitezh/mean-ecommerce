@@ -6,21 +6,26 @@
                 <ul class="header-left-top header-menu">
                     <li><a href="account.html"><i class="fa fa-user"></i>My account<i class="fa fa-angle-down"></i></a>
                         <ul class="header-dropdown">
-                            <li><a href="account.html">Login</a></li>
-                            <li><a href="account.html">Register</a></li>
+                            <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Register</a></li>
+                            <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+                            <li ng-show="nav.isLoggedIn()">
+                                <p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p>
+                            </li>
+                            <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+                            <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
                         </ul>
                     </li>
                     <li><a href="#"><i class="fa fa-globe"></i>English <i class="fa fa-angle-down"></i></a>
-                        <ul class="header-dropdown">
+                      <!--   <ul class="header-dropdown">
                             <li><a href="#">French</a></li>
                             <li><a href="#">German</a></li>
                         </ul>
-                    </li>
-                    <li><a href="#"><i class="fa fa-money"></i>USD <i class="fa fa-angle-down"></i></a>
-                        <ul class="header-dropdown">
+ -->                    </li>
+                    <li><a href="#"><i class="fa fa-money"></i>NGN <i class="fa fa-angle-down"></i></a>
+                        <!-- <ul class="header-dropdown">
                             <li><a href="#">USD</a></li>
                             <li><a href="#">US Dollar</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                 </ul>
             </div>
@@ -35,7 +40,7 @@
                         <a href="#"><i class="fa fa-google-plus"></i></a>
                     </div>
                     <div class="header-contact-info">
-                        <p><i class="fa fa-mobile"></i>Phone: <span>(+1)866-550-3669</span></p>
+                        <p><i class="fa fa-mobile"></i>Phone: <span>(+234)806-494-9432</span></p>
                     </div>
                 </div>
             </div>

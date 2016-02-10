@@ -6659,3 +6659,12 @@ blockquote {
     background:#0B74BF;
     color:#fff
 }
+
+
+/*Custom*/
+.navbar {
+    margin-bottom: 0px;
+}
+.home-five .cat-menu > ul#category {
+    z-index: 1000;
+}
