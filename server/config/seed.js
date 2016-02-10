@@ -12,38 +12,41 @@ var Variant = require('../api/product/product.model').variant;
 var Review = require('../api/product/product.model').review;
 var Image = require('../api/product/product.model').image;
 var Catalog = require('../api/catalog/catalog.model');
-var mainCatalog, home, books, clothing, variant, review;
+var mainCatalog, computers, laptops, desktops, fixtures, phones, fashion, men, women, books, artWorks, foods, variant, review, image1;
 
 Thing.find({}).removeAsync()
   .then(() => {
     Thing.create({
-      name: 'Development Tools',
-      info: 'Integration with popular tools such as Bower, Grunt, Babel, Karma, ' +
-        'Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, ' +
-        'Stylus, Sass, and Less.'
-    }, {
-      name: 'Server and Client integration',
-      info: 'Built with a powerful and fun stack: MongoDB, Express, ' +
-        'AngularJS, and Node.'
-    }, {
-      name: 'Smart Build System',
-      info: 'Build system ignores `spec` files, allowing you to keep ' +
-        'tests alongside code. Automatic injection of scripts and ' +
-        'styles into your index.html'
-    }, {
-      name: 'Modular Structure',
-      info: 'Best practice client and server structures allow for more ' +
-        'code reusability and maximum scalability'
-    }, {
-      name: 'Optimized Build',
-      info: 'Build process packs up your templates as a single JavaScript ' +
-        'payload, minifies your scripts/css/images, and rewrites asset ' +
-        'names for caching.'
-    }, {
-      name: 'Deployment Ready',
-      info: 'Easily deploy your app to Heroku or Openshift with the heroku ' +
-        'and openshift subgenerators'
-    });
+        name: 'Development Tools',
+        info: 'Integration with popular tools such as Bower, Grunt, Babel, Karma, ' +
+          'Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, ' +
+          'Stylus, Sass, and Less.'
+      }, {
+        name: 'Server and Client integration',
+        info: 'Built with a powerful and fun stack: MongoDB, Express, ' +
+          'AngularJS, and Node.'
+      }, {
+        name: 'Smart Build System',
+        info: 'Build system ignores `spec` files, allowing you to keep ' +
+          'tests alongside code. Automatic injection of scripts and ' +
+          'styles into your index.html'
+      }, {
+        name: 'Modular Structure',
+        info: 'Best practice client and server structures allow for more ' +
+          'code reusability and maximum scalability'
+      }, {
+        name: 'Optimized Build',
+        info: 'Build process packs up your templates as a single JavaScript ' +
+          'payload, minifies your scripts/css/images, and rewrites asset ' +
+          'names for caching.'
+      }, {
+        name: 'Deployment Ready',
+        info: 'Easily deploy your app to Heroku or Openshift with the heroku ' +
+          'and openshift subgenerators'
+      })
+      .then(() => {
+        console.log('finished populating dummy data');
+      });
   });
 
 User.find({}).removeAsync()
@@ -66,9 +69,7 @@ User.find({}).removeAsync()
   });
 
 
-Catalog
-  .find({})
-  .remove()
+Catalog.find({}).removeAsync()
   .then(function() {
     return Catalog.create({
       name: 'All'
@@ -77,23 +78,71 @@ Catalog
   .then(function(catalog) {
     mainCatalog = catalog;
     return mainCatalog.addChild({
-      name: 'Home'
+      name: 'Computers and Accessories'
     });
   })
   .then(function(category) {
-    home = category._id;
+    computers = category;
+    return computers.addChild({
+      name: 'Laptops'
+    });
+  })
+  .then(function(category) {
+    laptops = category;
+    return computers.addChild({
+      name: 'Desktops'
+    });
+  })
+  .then(function(category) {
+    desktops = category;
+    return mainCatalog.addChild({
+      name: 'Fixtures'
+    });
+  })
+  .then(function(category) {
+    fixtures = category;
+    return mainCatalog.addChild({
+      name: 'Phones and Tablets'
+    });
+  })
+  .then(function(category) {
+    phones = category;
+    return mainCatalog.addChild({
+      name: 'Fashion'
+    });
+  })
+  .then(function(category) {
+    fashion = category;
+    return fashion.addChild({
+      name: 'Men'
+    });
+  })
+  .then(function(category) {
+    men = category;
+    return fashion.addChild({
+      name: 'Women'
+    });
+  })
+  .then(function(category) {
+    women = category;
     return mainCatalog.addChild({
       name: 'Books'
     });
   })
   .then(function(category) {
-    books = category._id;
+    books = category;
     return mainCatalog.addChild({
-      name: 'Clothing'
+      name: 'Art Works'
     });
   })
   .then(function(category) {
-    clothing = category._id;
+    artWorks = category;
+    return mainCatalog.addChild({
+      name: 'Foods and Recipee'
+    });
+  })
+  .then(function(category) {
+    foods = category;
     return Product.find({}).remove({});
   })
   .then(function() {
@@ -106,43 +155,76 @@ Catalog
     });
   })
   .then(function(v) {
-    variant = v._id;
+    variant = v;
     Image.find({}).remove({});
     return Image.create({
-      imageUrl: '/assets/uploads/meanbook.jpg',
+      imageUrl: '/assets/uploads/general/1.jpg'
     })
   })
   .then(function(image) {
+    image1 = image;
+    return Image.create({
+      imageUrl: '/assets/uploads/general/2.jpg'
+    })
+  })
+  .then(function(image2) {
     return Product.create({
+      title: 'Dell laptop',
+      imageUrl: '/assets/uploads/general/1.jpg',
+      price: 25,
+      stock: 250,
+      featured: true,
+      new: true,
+      variants: [variant._id],
+      images: [image1._id, image2._id],
+      categories: [laptops._id],
+      description: 'Portable front laser lptop'
+    }, {
+      title: 'Hp 344 Desktops',
+      imageUrl: '/assets/uploads/general/1.jpg',
+      price: 25,
+      stock: 250,
+      featured: true,
+      new: true,
+      variants: [variant._id],
+      images: [image1._id, image2._id],
+      categories: [desktops._id],
+      description: 'Durable office laptops'
+    }, {
       title: 'MEAN eCommerce Book',
       imageUrl: '/assets/uploads/meanbook.jpg',
       price: 25,
       stock: 250,
-      variants: [variant],
-      images: [image._id, image._id],
-      categories: [books],
-      description: 'Build a powerful e-commerce application quickly with MEAN, a leading full-JavaScript stack. It takes you step-by-step from creating a real-world store to managing details such as authentication, shopping carts, payment, scalability and more.'
+      new: true,
+      variants: [variant._id],
+      images: [image1._id, image2._id],
+      categories: [books._id],
+      description: 'Build a powerful e-commerce application quickly with MEAN, a leading full-JavaScript stack.'
     }, {
       title: 'T-shirt',
       imageUrl: '/assets/uploads/meantshirt.jpg',
       price: 15,
       stock: 100,
-      variants: [variant],
-      images: [image._id, image._id],
-      categories: [clothing],
+      featured: true,
+      hot: true,
+      variants: [variant._id],
+      images: [image1._id, image2._id],
+      categories: [men._id],
       description: 'T-shirt with the MEAN stack logo'
     }, {
       title: 'Coffee Mug',
       imageUrl: '/assets/uploads/meanmug.jpg',
       price: 8,
       stock: 50,
-      variants: [variant],
-      images: [image._id],
-      categories: [home],
+      featured: true,
+      new: true,
+      variants: [variant._id],
+      images: [image1._id, image2._id],
+      categories: [books._id],
       description: 'Convert coffee into MEAN code'
     });
   })
-  .then(function() {
+  .then(function(x) {
     console.log('Finished populating Products with categories');
   })
   .then(null, function(err) {

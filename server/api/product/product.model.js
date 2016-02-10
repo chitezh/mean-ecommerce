@@ -56,6 +56,9 @@ var ProductSchema = new Schema({
     required: true,
     trim: true
   },
+  code: {
+    type: String
+  },
   price: {
     type: Number,
     required: true,
@@ -64,6 +67,18 @@ var ProductSchema = new Schema({
   stock: {
     type: Number,
     default: 1
+  },
+  featured: {
+    type: Boolean,
+    default: false
+  },
+  hot: {
+    type: Boolean,
+    default:false
+  },
+  new: {
+    type: Boolean,
+    default: false
   },
   imageUrl: {
     type: String
