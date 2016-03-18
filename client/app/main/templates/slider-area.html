@@ -6,170 +6,16 @@
                 <div class="cat-menu">
                     <ul id="category">
                         <li class="cat-title"><a href="#">Categories</a></li>
-                        <li><a href="#">Phone &amp; Tablet <i class="fa fa-angle-right"></i></a>
+                        <li ng-repeat="parentCategory in main.parentCategories"><a href="#">{{parentCategory.name}}<i class="fa fa-angle-right"></i></a>
                             <ul class="sub-menu clearfix">
-                                <li class="sub-sec col-md-6">
+                                <li class="sub-sec col-md-12">
                                     <ul>
-                                        <li><a class="title" href="#">Mobiles</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                        <li><a href="#">Discount Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Tablets</a></li>
-                                        <li><a href="#">Android</a></li>
-                                        <li><a href="#">Apple</a></li>
-                                        <li><a href="#">Windows</a></li>
-                                        <li><a href="#">Discount</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Dextop</a></li>
-                                        <li><a href="#">Android Mobiles</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Electronic</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                        <li><a href="#">Discount Tablets</a></li>
+                                        <li><a class="title" href="#">{{parentCategory.name}}</a></li>
+                                        <li ng-repeat="category in parentCategory.children"><a href="#">{{category.name}}</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="blog.html">Apple &amp; Laptop <i class="fa fa-angle-right"></i></a>
-                            <ul class="sub-menu clearfix">
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Computer</a></li>
-                                        <li><a href="#">Tablet</a></li>
-                                        <li><a href="#">Discount</a></li>
-                                        <li><a href="#">Windows</a></li>
-                                        <li><a href="#">Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Electronic</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                        <li><a href="#">Discount Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Mobiles</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                        <li><a href="#">Discount Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Dextop</a></li>
-                                        <li><a href="#">Android Mobiles</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="shop.html">Accessory <i class="fa fa-angle-right"></i></a>
-                            <ul class="sub-menu clearfix">
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">All in one</a></li>
-                                        <li><a href="#">Mobiles</a></li>
-                                        <li><a href="#">Discount</a></li>
-                                        <li><a href="#">Windows</a></li>
-                                        <li><a href="#">Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Camera</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple </a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                        <li><a href="#">Discount Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Tablets</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                        <li><a href="#">Discount Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Electronic</a></li>
-                                        <li><a href="#"> Mobiles</a></li>
-                                        <li><a href="#">Android </a></li>
-                                        <li><a href="#"> Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Inverters pay <i class="fa fa-angle-right"></i></a>
-                            <ul class="sub-menu clearfix">
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Windows</a></li>
-                                        <li><a href="#">Discharge</a></li>
-                                        <li><a href="#">Discount</a></li>
-                                        <li><a href="#">Apple</a></li>
-                                        <li><a href="#">Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Electronic</a></li>
-                                        <li><a href="#">Android</a></li>
-                                        <li><a href="#">Apple </a></li>
-                                        <li><a href="#">Windows</a></li>
-                                        <li><a href="#">Discount</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Phones</a></li>
-                                        <li><a href="#">Android Tablets</a></li>
-                                        <li><a href="#">Apple Mobiles</a></li>
-                                        <li><a href="#">Windows Phones</a></li>
-                                        <li><a href="#">Discount Tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sub-sec col-md-6">
-                                    <ul>
-                                        <li><a class="title" href="#">Android</a></li>
-                                        <li><a href="#"> Mobiles Discount</a></li>
-                                        <li><a href="#">Android </a></li>
-                                        <li><a href="#"> Mobiles</a></li>
-                                        <li><a href="#"> Phones Windows</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">discharge</a></li>
-                        <li><a href="#">Installment</a></li>
-                        <li><a href="#">ACCESSORY</a></li>
-                        <li><a href="#">all categories</a></li>
                     </ul>
                 </div>
             </div>
@@ -262,14 +108,14 @@
                 <div class="single-info">
                     <div class="s-icon"><i class="fa fa-phone"></i></div>
                     <div class="single-info-text">
-                        <h3><span>Phone:</span>(+1)888 987 666</h3>
+                        <h3><span>Phone:</span>(+234)888 987 666</h3>
                     </div>
                 </div>
                 <div class="single-info">
                     <div class="s-icon"><i class="fa fa-truck"></i></div>
                     <div class="single-info-text">
                         <h3>Free shipping</h3>
-                        <p>On order over $199</p>
+                        <p>On order over ₦199</p>
                     </div>
                 </div>
                 <div class="single-info">

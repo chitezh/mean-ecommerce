@@ -12,7 +12,9 @@ var Variant = require('../api/product/product.model').variant;
 var Review = require('../api/product/product.model').review;
 var Image = require('../api/product/product.model').image;
 var Catalog = require('../api/catalog/catalog.model');
-var mainCatalog, computers, laptops, desktops, fixtures, phones, fashion, men, women, books, artWorks, foods, variant, review, image1;
+var mainCatalog, computers, laptops, desktops, fixtures, phones,
+  phonesP, phonesT, fashion, men, women, books, artWorks, foods,
+  variant, review, image1, homeAndKitchen;
 
 Thing.find({}).removeAsync()
   .then(() => {
@@ -107,6 +109,18 @@ Catalog.find({}).removeAsync()
   })
   .then(function(category) {
     phones = category;
+    return phones.addChild({
+      name: 'Phones'
+    });
+  })
+  .then(function(category) {
+    phonesP = category;
+    return phones.addChild({
+      name: 'Tablets'
+    });
+  })
+  .then(function(category) {
+    phonesT = category;
     return mainCatalog.addChild({
       name: 'Fashion'
     });
@@ -143,6 +157,12 @@ Catalog.find({}).removeAsync()
   })
   .then(function(category) {
     foods = category;
+    return mainCatalog.addChild({
+      name: 'Home and Kitchen'
+    });
+  })
+  .then(function(category) {
+    homeAndKitchen = category;
     return Product.find({}).remove({});
   })
   .then(function() {

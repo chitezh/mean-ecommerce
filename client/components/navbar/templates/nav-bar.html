@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="logo">
-                    <a href="/" class="navbar-brand">BHCmart</a>
+                    <!-- <a href="/" class="navbar-brand"><img src="assets/images/logo.png" width="150" /></a> -->
+                    BHC Mart logo
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
@@ -15,7 +16,7 @@
                                 <a ui-sref="{{item.state}}">{{item.title}}</a>
                             </li>
                             <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
-                            <li><a href="shop-grid.html">Electronic</a>
+                            <li><a href="shop-grid.html">Featured</a>
                                 <div class="megamenu">
                                     <div class="megamenu-image clearfix">
                                         <div class="col-md-4 mega-banner">
@@ -57,22 +58,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="shop-grid.html">Fashion</a></li>
-                            <li class="drop-down"><a href="index.html">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="account.html">My Account</a></li>
-                                    <li><a href="cart.html">Cart Page</a></li>
-                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                    <li><a href="shop-list.html">Shop List</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="404.html">404 Error</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                          
                         </ul>
                     </nav>
                 </div>
@@ -92,15 +78,7 @@
                             <div class="box-search-select">
                                 <select class="selects" name="category">
                                     <option value="">All Categories</option>
-                                    <option value="elec">Electtronic</option>
-                                    <option value=" fashion">Fashion</option>
-                                    <option value="kitchen">Kitchenware</option>
-                                    <option value="tools">Tools</option>
-                                    <option value="wine">Wine</option>
-                                    <option value="versace">versace</option>
-                                    <option value="apple">Apple</option>
-                                    <option value="levono">Lenovo</option>
-                                    <option value="lock">Lock and Lock</option>
+                                    <option ng-repeat="category in nav.parentCategories" value="{{category.slug}}">{{category.name | limitTo:15}}</option>
                                 </select>
                             </div>
                         </div>
