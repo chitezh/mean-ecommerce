@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="logo">
-                    <!-- <a href="/" class="navbar-brand"><img src="assets/images/logo.png" width="150" /></a> -->
-                    BHC Mart logo
+                    <a href="/" class="navbar-brand"> BHC Mart logo<!-- <img src="assets/img/logo.png" width="150" /> --></a>
+                   
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
@@ -14,51 +14,21 @@
                         <ul id="nav">
                             <li ng-repeat="item in nav.menu" ui-sref-active="active">
                                 <a ui-sref="{{item.state}}">{{item.title}}</a>
-                            </li>
-                            <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
-                            <li><a href="shop-grid.html">Featured</a>
-                                <div class="megamenu">
+                                <div ng-if="item.featured" class="megamenu">
                                     <div class="megamenu-image clearfix">
-                                        <div class="col-md-4 mega-banner">
+                                        <div class="col-md-4 mega-banner" ng-repeat="f in item.featured">
                                             <div class="white-hover">
-                                                <a href="#"><img src="img/mega-b-5.jpg" alt=""></a>
+                                                <a ui-sref="{{f.state}}"><img src="{{f.image}}" alt=""></a>
                                             </div>
                                             <div class="border-list">
-                                                <a href="#" class="mega-title">HANDBAGS</a>
-                                                <a href="#">Shop All</a>
-                                                <a href="#">New Arrivals</a>
-                                                <a href="#">Crossbody Bags</a>
-                                                <a href="#">Shoulder Bags</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mega-banner">
-                                            <div class="white-hover">
-                                                <a href="#"><img src="img/mega-b-6.jpg" alt=""></a>
-                                            </div>
-                                            <div class="border-list">
-                                                <a href="#" class="mega-title">Jewery &amp; Accessories</a>
-                                                <a href="#">Hats &amp; Gloves</a>
-                                                <a href="#">Cold-Weather</a>
-                                                <a href="#">Fur &amp; Faux Fur</a>
-                                                <a href="#">Wraps,Capes &amp; Vests</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mega-banner">
-                                            <div class="white-hover">
-                                                <a href="#"><img src="img/mega-b-7.jpg" alt=""></a>
-                                            </div>
-                                            <div class="border-list">
-                                                <a href="#" class="mega-title">Shoes</a>
-                                                <a href="#">Pumps &amp; Slingbacks</a>
-                                                <a href="#">Evening</a>
-                                                <a href="#">Oxfords, Loafers</a>
-                                                <a href="#">Cold Weath</a>
+                                                <a ui-sref="{{f.state}}" class="mega-title">{{f.title}}</a>
+                                                <a ng-repeat="sub in f.items" ui-sref="{{sub.state}}">{{sub.title}}</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                          
+                            <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -91,7 +61,7 @@
                 <div class="header-right-menu">
                     <ul class="header-r-cart">
                         <li><a class="cart" href="cart.html"><i class="fa fa-shopping-cart"></i>Cart : ₦313.84<span>2</span></a>
-                           <!--  <div class="mini-cart-content">
+                            <!--  <div class="mini-cart-content">
                                 <div class="mini-top-sec">
                                     <div class="cart-image">
                                         <a href="#"><img alt="" src="img/product/p-4.jpg"></a>

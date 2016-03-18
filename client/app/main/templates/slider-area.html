@@ -3,21 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 hidden-xs hidden-sm left-sidebar">
-                <div class="cat-menu">
-                    <ul id="category">
-                        <li class="cat-title"><a href="#">Categories</a></li>
-                        <li ng-repeat="parentCategory in main.parentCategories"><a href="#">{{parentCategory.name}}<i class="fa fa-angle-right"></i></a>
-                            <ul class="sub-menu clearfix">
-                                <li class="sub-sec col-md-12">
-                                    <ul>
-                                        <li><a class="title" href="#">{{parentCategory.name}}</a></li>
-                                        <li ng-repeat="category in parentCategory.children"><a href="#">{{category.name}}</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <sidebar-cat></sidebar-cat>
             </div>
             <div class="col-lg-5 col-lg-offset-3 col-md-5 col-md-offset-3 hidden-sm">
                 <div class="slider-area">
@@ -104,7 +90,7 @@
                     </div>
                 </div>
             </div>
-       <!--      <div class="col-lg-4 col-md-4 hidden-sm" style="margin-top: 20px">
+            <!--      <div class="col-lg-4 col-md-4 hidden-sm" style="margin-top: 20px">
                 <div class="single-info">
                     <div class="s-icon"><i class="fa fa-phone"></i></div>
                     <div class="single-info-text">

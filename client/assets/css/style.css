@@ -2460,7 +2460,7 @@ footer a {
     font-size: 24px
 }
 .home-three .search-form button[type="submit"] {
-    background: rgba(0, 0, 0, 0) url("img/search.png") no-repeat scroll center center;
+    background: rgba(0, 0, 0, 0) url("../img/search.png") no-repeat scroll center center;
     border: medium none;
     float: right;
     height: 35px;
@@ -2472,7 +2472,7 @@ footer a {
     width: 35px;
 }
 .home-three .search-form button[type="submit"]:hover {
-    background: rgba(0, 0, 0, 0) url("img/search-hover.png") no-repeat scroll center center !important;
+    background: rgba(0, 0, 0, 0) url("../img/search-hover.png") no-repeat scroll center center !important;
 }
 .home-three .search-menu {
     color: #232323;
@@ -2952,7 +2952,7 @@ footer a {
     padding: 18px 0 0 0;
     text-align: center;
     width: 59px;
-    background: url(img/discount-border.png);
+    background: url(../img/discount-border.png);
     position: absolute;
     top: 6px;
     font-weight: 500
@@ -3187,7 +3187,7 @@ i.grey {
     color: #232323;
 }
 .home-three #news-form > input {
-    background: rgba(0, 0, 0, 0) url("img/icon/bor.png") repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("../img/icon/bor.png") repeat scroll 0 0;
 }
 .home-three .news-form > form {
     position: relative;
@@ -3508,7 +3508,7 @@ i.grey {
 .box-search-select select {
     -moz-appearance: none;
     -webkit-appearance: none;
-    background: rgba(0, 0, 0, 0) url("img/icon/arrow-down.png") no-repeat scroll 13px 7px;
+    background: rgba(0, 0, 0, 0) url("../img/icon/arrow-down.png") no-repeat scroll 13px 7px;
     border: 0 none;
     border-radius: 0;
     cursor: pointer;
@@ -3926,7 +3926,7 @@ i.grey {
 /*  16.8 Homepage Four Newsletter Area
 /*----------------------------------------*/
 .newsletter {
-    background: rgba(0, 0, 0, 0) url("img/banner/banner-27.jpg") no-repeat scroll 0 0 / cover ;
+    background: rgba(0, 0, 0, 0) url("../img/banner/banner-27.jpg") no-repeat scroll 0 0 / cover ;
     color: #ffffff;
     padding: 40px 0;
     text-align: center;
@@ -4253,7 +4253,7 @@ i.grey {
     width: 1px;
 }
 .home-five .box-search-select select {
-    background: rgba(0, 0, 0, 0) url("img/icon/arrow-down.png") no-repeat scroll 16px 7px;
+    background: rgba(0, 0, 0, 0) url("../img/icon/arrow-down.png") no-repeat scroll 16px 7px;
     height: 35px;
     padding-right: 12px;
 }
@@ -4746,7 +4746,7 @@ h3.sidebar-sub-title {
     margin-bottom: 30px !important;
 }
 .shop-tab a.list-view, .shop-tab a.grid-view {
-    background: rgba(0, 0, 0, 0) url("img/icon/list-view.png") repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("../img/icon/list-view.png") repeat scroll 0 0;
     float: left;
     height: 27px;
     width: 27px;
@@ -4754,16 +4754,16 @@ h3.sidebar-sub-title {
     position: relative
 }
 .shop-tab a.grid-view {
-    background: url(img/icon/grid-view.png);
+    background: url(../img/icon/grid-view.png);
 }
 .shop-view a.active.list-view, .shop-view a.list-view:hover {
-    background: rgba(0, 0, 0, 0) url("img/icon/list-view-hover.png") repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("../img/icon/list-view-hover.png") repeat scroll 0 0;
 }
 .shop-view a.active.grid-view, .shop-view a.grid-view:hover {
-    background: url(img/icon/grid-view-hover.png);
+    background: url(../img/icon/grid-view-hover.png);
 }
 .shop-tab li a.grid-view:hover:after, .shop-tab li.active a.grid-view:after, .shop-tab li a.list-view:hover:after, .shop-tab li.active a.list-view:after {
-    background: url(img/icon/grid-view-hover.png);
+    background: url(../img/icon/grid-view-hover.png);
     height: 27px;
     width: 27px;
     position: absolute;
@@ -4772,7 +4772,7 @@ h3.sidebar-sub-title {
     left: 0; 
 }
 .shop-tab li a.list-view:hover:after, .shop-tab li.active a.list-view:after {
-    background: url(img/icon/list-view-hover.png);
+    background: url(../img/icon/list-view-hover.png);
     height: 27px;
     width: 27px;
     position: absolute;
@@ -5025,12 +5025,12 @@ h3.sidebar-sub-title {
     padding: 1px 0;
 }
 .product-details-area .filter-by:first-child {
-    background: rgba(0, 0, 0, 0) url("img/icon/p-details-1.jpg") repeat scroll 18px center;
+    background: rgba(0, 0, 0, 0) url("../img/icon/p-details-1.jpg") repeat scroll 18px center;
     height: 40px;
     width: 107px;
 }
 .product-details-area .filter-by:nth-child(2) {
-    background: rgba(0, 0, 0, 0) url("img/icon/p-details-2.jpg") repeat scroll right center;
+    background: rgba(0, 0, 0, 0) url("../img/icon/p-details-2.jpg") repeat scroll right center;
     height: 40px;
     width: 142px;
 }
@@ -5061,7 +5061,7 @@ h3.sidebar-sub-title {
     background: #f7a62d
 }
 .product-details-area .filter-by:last-child {
-    background: rgba(0, 0, 0, 0) url("img/icon/p-details-1.jpg") repeat scroll 18px center;
+    background: rgba(0, 0, 0, 0) url("../img/icon/p-details-1.jpg") repeat scroll 18px center;
 }
 .cart-plus-minus-box {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -5618,7 +5618,7 @@ a.p-d-btn:hover {
 .cart-main-area select.country {
     -moz-appearance: none;
     -webkit-appearance: none;
-    background: rgba(0, 0, 0, 0) url("img/icon/cart-bg.jpg") no-repeat scroll -41px -2px;
+    background: rgba(0, 0, 0, 0) url("../img/icon/cart-bg.jpg") no-repeat scroll -41px -2px;
     border: 1px solid #e6e8e9;
     color: #b6b6ba;
     margin-bottom: 28px;
@@ -6540,7 +6540,7 @@ blockquote {
 .error-text-area {
     text-align: center;
     padding: 65px 0;
-    background:url("img/not-found-bg.jpg") no-repeat fixed center center / cover ;
+    background:url("../img/not-found-bg.jpg") no-repeat fixed center center / cover ;
     position: relative;
 }
 .error-text-area h1 {
@@ -6667,4 +6667,7 @@ blockquote {
 }
 .home-five .cat-menu > ul#category {
     z-index: 1000;
+}
+.home-five .col-md-3.left-sidebar-others {
+    margin-top: -102px;
 }

@@ -39,7 +39,7 @@ Thing.find({}).removeAsync()
       }, {
         name: 'Optimized Build',
         info: 'Build process packs up your templates as a single JavaScript ' +
-          'payload, minifies your scripts/css/images, and rewrites asset ' +
+          'payload, minifies your scripts/css/img, and rewrites asset ' +
           'names for caching.'
       }, {
         name: 'Deployment Ready',
@@ -196,7 +196,7 @@ Catalog.find({}).removeAsync()
       featured: true,
       new: true,
       variants: [variant._id],
-      images: [image1._id, image2._id],
+      img: [image1._id, image2._id],
       categories: [laptops._id],
       description: 'Portable front laser lptop'
     }, {
@@ -207,7 +207,7 @@ Catalog.find({}).removeAsync()
       featured: true,
       new: true,
       variants: [variant._id],
-      images: [image1._id, image2._id],
+      img: [image1._id, image2._id],
       categories: [desktops._id],
       description: 'Durable office laptops'
     }, {
@@ -217,7 +217,7 @@ Catalog.find({}).removeAsync()
       stock: 250,
       new: true,
       variants: [variant._id],
-      images: [image1._id, image2._id],
+      img: [image1._id, image2._id],
       categories: [books._id],
       description: 'Build a powerful e-commerce application quickly with MEAN, a leading full-JavaScript stack.'
     }, {
@@ -228,7 +228,7 @@ Catalog.find({}).removeAsync()
       featured: true,
       hot: true,
       variants: [variant._id],
-      images: [image1._id, image2._id],
+      img: [image1._id, image2._id],
       categories: [men._id],
       description: 'T-shirt with the MEAN stack logo'
     }, {
@@ -239,7 +239,7 @@ Catalog.find({}).removeAsync()
       featured: true,
       new: true,
       variants: [variant._id],
-      images: [image1._id, image2._id],
+      img: [image1._id, image2._id],
       categories: [books._id],
       description: 'Convert coffee into MEAN code'
     });

@@ -7,27 +7,7 @@
     constructor($http, $scope, socket, Catalog) {
       this.$http = $http;
       this.awesomeThings = [];
-      let self = this;
 
-      Catalog.query(function(categories) {
-        self.categories = categories;
-        self.allCategory = _.filter(categories, function(category) {
-          return category.ancestors.length == 0;
-        })
-        let parentCategories = _.filter(categories, function(category) {
-          return category.ancestors.length == 1;
-        })
-        self.parentCategories = _.map(parentCategories, function(parentCategory) {
-          parentCategory.children = _.map(parentCategory.children, function(childId) {
-            if (childId)
-              return _.find(categories, {
-                "_id": childId
-              })
-          })
-          return parentCategory
-        });
-        socket.syncUpdates('catalog', self.categories);
-      });
 
 
       $http.get('/api/things').then(response => {
