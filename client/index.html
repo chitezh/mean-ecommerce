@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="bhcmartApp">
 <!--<![endif]-->
 
 <head>
@@ -42,7 +42,7 @@
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
-<body class="home-five" ng-app="bhcmartApp">
+<body class="home-five">
     <!--[if lt IE 7]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -81,6 +81,7 @@
     <script src="bower_components/angular-socket-io/socket.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+    <script src="bower_components/ngCart/dist/ngCart.js"></script>
     <!-- endbower -->
     <script src="assets/js/vendor/jquery-1.11.3.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -107,23 +108,32 @@
     <script src="app/admin/admin.module.js"></script>
     <script src="components/auth/auth.module.js"></script>
     <script src="components/util/util.module.js"></script>
-    <script src="components/auth/interceptor.service.js"></script>
+    <script src="app/main/main.js"></script>
+    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/account/signup/signup.controller.js"></script>
     <script src="app/admin/admin.controller.js"></script>
-    <script src="app/account/account.js"></script>
+    <script src="app/about/about.controller.js"></script>
     <script src="app/admin/admin.router.js"></script>
     <script src="app/app.constant.js"></script>
+    <script src="app/cart/cart.controller.js"></script>
+    <script src="app/cart/cart.js"></script>
     <script src="app/category/category.controller.js"></script>
     <script src="app/category/category.js"></script>
+    <script src="app/checkout/checkout.controller.js"></script>
+    <script src="app/checkout/checkout.js"></script>
+    <script src="app/contact/contact.controller.js"></script>
+    <script src="app/contact/contact.js"></script>
+    <script src="app/invoice/invoice.controller.js"></script>
+    <script src="app/invoice/invoice.js"></script>
     <script src="app/main/main.controller.js"></script>
-    <script src="app/main/main.js"></script>
-    <script src="app/products/products.controller.js"></script>
-    <script src="app/products/products.js"></script>
-    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/about/about.js"></script>
+    <script src="app/product/product.controller.js"></script>
+    <script src="app/product/product.js"></script>
+    <script src="app/account/account.js"></script>
     <script src="components/auth/auth.service.js"></script>
-    <script src="app/account/login/login.controller.js"></script>
+    <script src="components/auth/interceptor.service.js"></script>
     <script src="components/auth/router.decorator.js"></script>
     <script src="components/auth/user.service.js"></script>
-    <script src="components/catalog/catolog.service.js"></script>
     <script src="components/footer/footer.directive.js"></script>
     <script src="components/modal/modal.service.js"></script>
     <script src="components/mongoose-error/mongoose-error.directive.js"></script>
@@ -131,10 +141,12 @@
     <script src="components/navbar/navbar.directive.js"></script>
     <script src="components/oauth-buttons/oauth-buttons.controller.js"></script>
     <script src="components/oauth-buttons/oauth-buttons.directive.js"></script>
+    <script src="components/order/order.service.js"></script>
+    <script src="components/product/product.service.js"></script>
     <script src="components/sidebar-cat/sidebar-cat.controller.js"></script>
     <script src="components/sidebar-cat/sidebar-cat.directive.js"></script>
     <script src="components/socket/socket.service.js"></script>
-    <script src="app/account/signup/signup.controller.js"></script>
+    <script src="app/account/login/login.controller.js"></script>
     <script src="components/util/util.service.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->

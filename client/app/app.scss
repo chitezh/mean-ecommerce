@@ -15,15 +15,29 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
+.form-action.account {
+  display: flex;
+}
+
+.product-grid ul#category {
+	margin-top: -102px !important;
+	position: initial !important;
+	width: 100% !important;
+}
+
 // Component styles are injected through grunt
 // injector
+@import 'about/about.scss';
 @import 'admin/admin.scss';
+@import 'cart/cart.scss';
 @import 'category/category.scss';
+@import 'checkout/checkout.scss';
+@import 'contact/contact.scss';
+@import 'invoice/invoice.scss';
 @import 'main/main.scss';
-@import 'products/products.scss';
+@import 'product/product.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
 @import '../components/sidebar-cat/sidebar-cat.scss';
 // endinjector
-

@@ -61,14 +61,19 @@ function removeEntity(res) {
 
 // Gets a list of Catalogs
 exports.index = function(req, res) {
-  Catalog.find().sort({_id: 1}).execAsync()
+  Catalog.find().sort({ _id: 1 }).execAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
 
 // Gets a single Catalog from the DB
 exports.show = function(req, res) {
-  Catalog.findByIdAsync(req.params.id)
+  Catalog
+    .findOne({
+      slug: req.params.slug
+    })
+    .populate('children')
+    .execAsync()
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));

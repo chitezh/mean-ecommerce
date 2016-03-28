@@ -1,74 +1,39 @@
 
 <navbar></navbar>
 
-
-<!-- <header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button></a></li>
-      </ul>
-    </div>
-  </div>
-
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="main.newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="main.addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
-</div>
- -->
-
  <div ng-include="'app/main/templates/slider-area.html'"></div>
+ 
  <div ng-include="'app/main/templates/featured-timer-tab.html'"></div>
- <div ng-include="'app/main/templates/featured-tab.html'"></div>
- <div ng-include="'app/main/templates/featured-fashion-tab.html'"></div>
 
+<!-- Featured tabs area 1 -->
+ <div ng-include="'app/main/templates/featured-tabs-a.html'"></div>
 
-<!--Product Banner Area Start-->
-<div class="product-banner-area white-hover">
+<!--Product Banner Area A Start-->
+<div class="full-width-banner-area white-hover">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <a href="#"><img src="img/banner/banner-21.jpg" alt=""></a>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <a href="#"><img src="img/banner/banner-22.jpg" alt=""></a>
+            <div class="col-lg-6 col-md-6 col-sm-6" ng-repeat="banner in main.featuredBannerA">
+                <a href="{{banner.link}}"><img src="{{banner.img}}" alt=""></a>
             </div>
         </div>
     </div>
 </div>
 <!--End of Product Banner Area-->
 
-<div ng-include="'app/main/templates/featured-kitchen-tab.html'"></div>
+<!-- Featured tabs area 2 -->
+ <div ng-include="'app/main/templates/featured-tabs-b.html'"></div>
 
-
-<!--Full Width Banner Area-->
+<!--Full Width Banner B Area-->
 <div class="full-width-banner-area white-hover">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="#"><img src="img/banner/banner-24.jpg" alt=""></a>
+                <a href="{{main.featuredBannerB.link}}"><img src="{{main.featuredBannerB.img}}" alt=""></a>
             </div>
         </div>
     </div>
 </div>
 <!--End of Full Width Banner Area-->
-
- <!-- <div ng-include="'app/main/templates/featured-tools-tab.html'"></div> -->
 
 <!--Service Area Start--> 
 <section class="product-service-area">
@@ -80,7 +45,7 @@
                         <i class="fa fa-phone"></i>
                     </div>
                     <div class="s-information">
-                        <h4>Phone:(+1)888 987 666</h4>
+                        <h4>Phone:(+234)888 987 666</h4>
                         <p>On orders over ₦100</p>
                     </div>
                 </div>
@@ -122,169 +87,5 @@
     </div>
 </section>
 <!--End of Service Area-->
-
- <!-- <div ng-include="'app/main/templates/featured-gift-tab.html'"></div> -->
-
-<!--Newsletter Area Start-->
-<!-- <div class="newsletter-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="newsletter">
-                    <h4>Newsletter</h4>
-                    <p>Please send a letter to us, believe that the information promotion will not slip out of hand you</p>
-                    <div class="row">
-                        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                            <form id="news-form" action="#">
-                                <input type="text" placeholder="Your Email . ." name="s">
-                                <button type="submit">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!--End of Newsletter Area-->
-
-<!--Top Categories Area Start-->
-<!-- <div class="top-categories-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="top-cate-title">
-                    <h3>top categories</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                <div class="top-categoies">
-                    <div class="top-cat-list">
-                        <ul>
-                            <li><a href="#">Batteries &amp; Chargers</a></li>
-                            <li><a href="#">Headphone, Headset</a></li>
-                            <li><a href="#">Home Audio</a></li>
-                            <li><a href="#">Mp3 Player Accessories</a></li>
-                        </ul>
-                    </div>
-                    <div class="top-cat-image white-hover">
-                        <a href="#">
-                            <img src="img/banner/banner-36.jpg" alt="">
-                            <span>Shop now <i class="fa fa-angle-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                <div class="top-categoies">
-                    <div class="top-cat-list">
-                        <ul>
-                            <li><a href="#">Batteries &amp; Chargers</a></li>
-                            <li><a href="#">Headphone, Headset</a></li>
-                            <li><a href="#">Home Audio</a></li>
-                            <li><a href="#">Mp3 Player Accessories</a></li>
-                        </ul>
-                    </div>
-                    <div class="top-cat-image white-hover">
-                        <a href="#">
-                            <img src="img/banner/banner-37.jpg" alt="">
-                            <span>Shop now <i class="fa fa-angle-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                <div class="top-categoies">
-                    <div class="top-cat-list">
-                        <ul>
-                            <li><a href="#">Walkera</a></li>
-                            <li><a href="#">Fpv System &amp; Parts</a></li>
-                            <li><a href="#">RC Cars &amp; Parts</a></li>
-                            <li><a href="#">Helicopters &amp; Part</a></li>
-                        </ul>
-                    </div>
-                    <div class="top-cat-image white-hover">
-                        <a href="#">
-                            <img src="img/banner/banner-38.jpg" alt="">
-                            <span>Shop now <i class="fa fa-angle-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 hidden-sm col-xs-12">
-                <div class="top-categoies">
-                    <div class="top-cat-list">
-                        <ul>
-                            <li><a href="#">Bath &amp; Body</a></li>
-                            <li><a href="#">Shaving &amp; Removal</a></li>
-                            <li><a href="#">Fragrances</a></li>
-                            <li><a href="#">Spa Equipment</a></li>
-                        </ul>
-                    </div>
-                    <div class="top-cat-image white-hover">
-                        <a href="#">
-                            <img src="img/banner/banner-39.jpg" alt="">
-                            <span>Shop now <i class="fa fa-angle-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!--End of Top Categories Area-->
-<!--Brand Area Start-->
-<!-- <div class="brand-area">
-    <div class="container">
-        <div class="row">
-            <div class="brand-wrapper">
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-1.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-2.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-4.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-1.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-2.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="single-brand">
-                        <a href="#"><img src="img/brand/brand-4.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!--End of Brand Area-->
-
 
 <footer></footer>

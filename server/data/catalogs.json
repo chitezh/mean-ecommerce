@@ -1,0 +1,213 @@
+[{
+  "_id": "56f24ce1f0b74ee730de5242",
+  "name": "All",
+  "slug": "all",
+  "children": [
+    "56f24ce1f0b74ee730de524b",
+    "56f24ce1f0b74ee730de524e",
+    "56f24ce1f0b74ee730de524f",
+    "56f24ce1f0b74ee730de5252",
+    "56f24ce1f0b74ee730de5255",
+    "56f24ce1f0b74ee730de5256",
+    "56f24ce1f0b74ee730de5257",
+    "56f24ce1f0b74ee730de5258"
+  ],
+  "ancestors": []
+}, {
+  "_id": "56f24ce1f0b74ee730de524b",
+  "name": "Computers and Accessories",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "computers-and-accessories",
+  "children": [
+    "56f24ce1f0b74ee730de524c",
+    "56f24ce1f0b74ee730de524d"
+  ],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de524c",
+  "name": "Laptops",
+  "parent": "56f24ce1f0b74ee730de524b",
+  "slug": "laptops",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de524b"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de524d",
+  "name": "Desktops",
+  "parent": "56f24ce1f0b74ee730de524b",
+  "slug": "desktops",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de524b"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de524e",
+  "name": "Fixtures",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "fixtures",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de524f",
+  "name": "Phones and Tablets",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "phones-and-tablets",
+  "children": [
+    "56f24ce1f0b74ee730de5250",
+    "56f24ce1f0b74ee730de5251"
+  ],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5250",
+  "name": "Phones",
+  "parent": "56f24ce1f0b74ee730de524f",
+  "slug": "phones-2",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de524f"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5251",
+  "name": "Tablets",
+  "parent": "56f24ce1f0b74ee730de524f",
+  "slug": "tablets",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de524f"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5252",
+  "name": "Fashion",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "fashion",
+  "children": [
+    "56f24ce1f0b74ee730de5253",
+    "56f24ce1f0b74ee730de5254"
+  ],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5253",
+  "name": "Men",
+  "parent": "56f24ce1f0b74ee730de5252",
+  "slug": "men",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de5252"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5254",
+  "name": "Women",
+  "parent": "56f24ce1f0b74ee730de5252",
+  "slug": "women",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de5252"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5255",
+  "name": "Books",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "books",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5256",
+  "name": "Art Works",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "art-works",
+  "children": [
+    "56f24ce1f0b44ee730de5256",
+    "56f14ce1f0b44ee730de5256"
+  ],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b44ee730de5256",
+  "name": "Foreign",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "foreign-1",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de5256"
+  ]
+}, {
+  "_id": "56f14ce1f0b44ee730de5256",
+  "name": "Local",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "local-1",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242",
+    "56f24ce1f0b74ee730de5256"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5257",
+  "name": "Foods and Recipee",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "foods-and-recipee",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de5258",
+  "name": "Home and Kitchen",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "home-and-kitchen",
+  "children": [
+    "56f24ce1f0b74ee730de4258",
+    "56f24ce1f0b74ee720de4258"
+  ],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b71ee730de5258",
+  "name": "Upsell Products",
+  "parent": "56f24ce1f0b74ee730de5242",
+  "slug": "upsell-products",
+  "children": [
+  ],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee730de4258",
+  "name": "Home",
+  "parent": "56f24ce1f0b74ee730de5258",
+  "slug": "home",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5258",
+    "56f24ce1f0b74ee730de5242"
+  ]
+}, {
+  "_id": "56f24ce1f0b74ee720de4258",
+  "name": "Kitchen",
+  "parent": "56f24ce1f0b74ee730de5258",
+  "slug": "kitchen",
+  "children": [],
+  "ancestors": [
+    "56f24ce1f0b74ee730de5258",
+    "56f24ce1f0b74ee730de5242"
+  ]
+}]

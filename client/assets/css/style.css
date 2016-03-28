@@ -4095,7 +4095,7 @@ i.grey {
     border-bottom: 0
 }
 .home-five .logo {
-    padding: 22px 0;
+    padding: 17px 0;
 }
 .home-five .header-dropdown li {
     display: block;
@@ -4132,6 +4132,9 @@ i.grey {
     padding: 11px 0;
 }
 .home-five .mainmenu li:hover > a {
+    color: #0b74bf !important;
+}
+.home-five .mainmenu li.active > a {
     color: #0b74bf !important;
 }
 .home-five .mainmenu ul#nav li .megamenu {
@@ -4206,7 +4209,8 @@ i.grey {
 .home-five .cat-menu > ul#category li.cat-title {
     background: #0966A8 !important;
     border: 1px solid #0966A8 !important;
-    padding: 11px 24px
+    padding: 11px 24px;
+    z-index:1000;
 }
 .home-five .cat-menu > ul#category {
     border: 0;
@@ -4489,7 +4493,8 @@ i.grey {
     vertical-align: middle;
 }
 .home-five .full-width-banner-area {
-    padding: 0
+    padding: 0;
+    padding-top: 50px;
 }
 .home-five .features-tab-area.tools {
     padding-bottom: 50px;
@@ -5071,7 +5076,7 @@ h3.sidebar-sub-title {
     height: 38px;
     outline: medium none;
     text-align: center;
-    width: 20px;
+    width: 60px;
 }
 .inc.qtybutton, .dec.qtybutton {
     float: left;

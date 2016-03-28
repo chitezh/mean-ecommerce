@@ -7,71 +7,71 @@ class NavbarController {
     'state': 'main'
   }, {
     'title': 'Electronic',
-    'state': 'category.products({"category_id": "56ec373434da186cfe4be2de"})'
+    'state': 'products({"slug": "computers-and-accessories"})'
   }, {
     'title': 'Fashion',
-    'state': 'category.products({"category_id": "56ec373434da186cfe4be2de"})'
+    'state': 'products({"slug": "fashion"})'
   }, {
     'title': 'Featured',
     'state': 'main',
     'featured': [{
       'image': 'assets/img/mega-b-6.jpg',
       'title': 'Jewery & Accessories',
-      'state': 'category.products({"category_id": "56ec373434da186cfe4be2de"})',
+      'state': 'products({"slug": "art-works"})',
       'items': [{
         'title': 'Hats & Gloves',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Cold-Weather',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Fur & Faux Fur',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Wraps,Capes & Vests',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }]
     }, {
       'image': 'assets/img/mega-b-5.jpg',
       'title': 'HANDBAGS',
-      'state': 'category.products({"category_id": "56ec373434da186cfe4be2de"})',
+      'state': 'products({"slug": "women"})',
       'items': [{
         'title': 'Shop All',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'New Arrivals',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Crossbody Bags',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Shoulder Bags',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }]
     }, {
       'image': 'assets/img/mega-b-7.jpg',
       'title': 'Shoes',
-      'state': 'category.products({"category_id": "56ec373434da186cfe4be2de"})',
+      'state': 'products({"slug": "men"})',
       'items': [{
         'title': 'Pumps & Slingbacks',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Evening',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Oxfords, Loafers',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }, {
         'title': 'Cold Weath',
-        'state': 'products.detail({id: "1"})'
+        'state': 'products.detail({slug: "1"})'
       }]
     }]
   }, {
     'title': 'About Us',
-    'state': 'main.about'
+    'state': 'about'
   }, {
     'title': 'Contact Us',
-    'state': 'main.contact'
+    'state': 'contact'
   }];
 
 
@@ -87,7 +87,7 @@ class NavbarController {
 
     Catalog.query(function(categories) {
       self.parentCategories = _.filter(categories, function(category) {
-        return category.ancestors.length == 1;
+        return category.ancestors.length == 1 && category.slug != 'upsell-products';
       })
     });
   }

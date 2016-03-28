@@ -3,14 +3,9 @@
 angular.module('bhcmartApp')
   .config(function($stateProvider) {
     $stateProvider
-      .state('category', {
-        abstract: true,
-        url: '/category',
+      .state('products', {
+        url: '/category/{slug}',
         templateUrl: 'app/category/category.html',
         controller: 'CategoryCtrl'
       })
-      .state('category.products', {
-        url: "/{category_id}",
-        templateUrl: 'app/category/product-list.html'
-      });
   });

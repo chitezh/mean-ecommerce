@@ -77,16 +77,22 @@ function saveFeaturedImage(res, file) {
   }
 }
 
-function productsInCategory(catalog) {
-  var catalog_ids = [catalog._id].concat(catalog.children);
-  return Product
-    .find({
-      'categories': {
-        $in: catalog_ids
-      }
-    })
-    .populate('categories')
-    .exec();
+function productsInCategory(limit) {
+  limit = Number(limit) || null;
+  return function(catalog) {
+    var catalog_ids = [catalog._id].concat(catalog.children);
+    return Product
+      .find({
+        'categories': {
+          $in: catalog_ids
+        }
+      })
+      .limit(limit)
+      .populate({path:'categories', select: 'name'})
+      .populate({ path: 'reviews', select: 'rating' })
+      .populate({ path: 'images', select: 'imageUrl' })
+      .exec();
+  }
 }
 
 // Gets a list of Products
@@ -98,9 +104,16 @@ exports.index = function(req, res) {
 
 // Gets a single Product from the DB
 exports.show = function(req, res) {
-  Product.findByIdAsync(req.params.id)
+  Product.findOne({ _id: req.params.id })
+    .populate('images')
+    .populate({ path: 'reviews' }).populate({ path: 'categories', select: 'slug' })
+    .execAsync()
     .then(handleEntityNotFound(res))
-    .then(responseWithResult(res))
+    .then(function(entity) {
+      if (entity) {
+        res.status(200).json(entity);
+      }
+    })
     .catch(handleError(res));
 };
 
@@ -146,12 +159,13 @@ exports.upload = function(req, res) {
 };
 
 exports.catalog = function(req, res) {
+  var limit = req.params.limit;
   Catalog
     .findOne({
       slug: req.params.slug
     })
     .execAsync()
-    .then(productsInCategory)
+    .then(productsInCategory(limit))
     .then(responseWithResult(res))
     .catch(handleError(res));
 };

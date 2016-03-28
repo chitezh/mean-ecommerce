@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
+var slugs = require('mongoose-url-slugs');
 
 var ImageSchema = new Schema({
   imageUrl: {
@@ -43,10 +44,17 @@ var ReviewSchema = new Schema({
   content: {
     type: String
   },
+  by: {
+    type: String
+  },
   rating: {
     type: Number,
     min: 1,
     max: 5
+  },
+  posted: {
+    type: Date,
+    default: Date.now
   }
 });
 
@@ -74,7 +82,7 @@ var ProductSchema = new Schema({
   },
   hot: {
     type: Boolean,
-    default:false
+    default: false
   },
   new: {
     type: Boolean,
@@ -112,6 +120,8 @@ var ProductSchema = new Schema({
   'title': 'text',
   'description': 'text'
 });
+
+ProductSchema.plugin(slugs('title'));
 
 module.exports = {
   product: mongoose.model('Product', ProductSchema),

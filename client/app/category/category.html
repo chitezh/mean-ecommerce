@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-7 col-md-offset-3">
                 <ul class="breadcrumb">
-                    <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
                     <li class="active">Products</li>
                 </ul>
             </div>
@@ -17,7 +17,8 @@
 <section class="product-grid">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 left-sidebar-others">
+            <div class="col-lg-3 col-md-3">
+                <!-- category sidebar -->
                 <sidebar-cat></sidebar-cat>
                 <div class="p-widget-title top-title">
                     <div class="left-sidebar-title">
@@ -26,44 +27,14 @@
                 <aside class="widget-price">
                     <h3 class="sidebar-sub-title">Price Slider</h3>
                     <div class="price_filter">
-                        <div id="slider-range"></div>
+                        <div id="slider-range" slider-range></div>
                         <div class="price_slider_amount">
-                            <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                            <input amount type="text" id="amount" name="price" placeholder="Add Your Price" />
                         </div>
                     </div>
-                    <a href="#">Show</a>
                 </aside>
-                <aside class="widget-list">
-                    <h3 class="sidebar-sub-title">Manufacturers</h3>
-                    <ul id="product-list">
-                        <li><a href="#">Ellectronic</a></li>
-                        <li><a href="#">Fashion &amp; Beauty</a></li>
-                        <li><a href="#">SmartPhone &amp; Tablets</a></li>
-                        <li><a href="#">Sports &amp; Outdoors</a></li>
-                        <li><a href="#">Automotive &amp; Motorcyle</a></li>
-                        <li><a href="#">Jewery &amp; Watches</a></li>
-                    </ul>
-                </aside>
-                <div class="p-widget-title compare">
-                    <div class="left-sidebar-title">
-                        <h3>Compare Products</h3></div>
-                </div>
-                <aside>
-                    <p>You have no item(s) to compare</p>
-                </aside>
-                <aside class="widget widget-tags">
-                    <h3 class="sidebar-title"><span>Popular Tags</span></h3>
-                    <ul>
-                        <li><a href="#" class="medium">Apple (Macbook)</a></li>
-                        <li><a href="#">Dell</a></li>
-                        <li><a href="#" class="x-large">Acer</a></li>
-                        <li><a href="#" class="large">HP</a></li>
-                        <li><a href="#" class="m-large">Levono</a></li>
-                        <li><a href="#" class="large">laptop</a></li>
-                        <li><a href="#" class="ex-large">Sony</a></li>
-                        <li><a href="#" class="sml">Nokia Lumia 630</a></li>
-                    </ul>
-                    <a class="n-a-btn" href="#">View All Tags</a>
+                <aside class="widget widget-banner border-hover">
+                    <a href="#"><img alt="" src="img/banner/banner-30.jpg"></a>
                 </aside>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
@@ -77,14 +48,14 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs navbar-left" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#grid" class="grid-view" aria-controls="grid" role="tab" data-toggle="tab"></a>
+                                <a href="#grid" class="grid-view" aria-controls="grid" role="tab" data-toggle="tab" my-tab></a>
                             </li>
                             <li role="presentation">
-                                <a href="#list" class="list-view" aria-controls="list" role="tab" data-toggle="tab"></a>
+                                <a href="#list" class="list-view" aria-controls="list" role="tab" data-toggle="tab" my-tab></a>
                             </li>
                         </ul>
                         <div class="filters">
-                            <div class="filter-by">
+                            <!--  <div class="filter-by">
                                 <h4>Short by </h4>
                                 <form action="#">
                                     <div class="select-filter">
@@ -107,12 +78,84 @@
                                         </select>
                                     </div>
                                 </form>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div ui-view='' class="tab-content">
+                <div class="tab-content">
+                    <!-- <div ng-include="'app/category/product-list.html'"></div> -->
+                    <div role="tabpanel" class="tab-pane active" id="grid">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" ng-repeat="product in products">
+                                <div class="single-product">
+                                    <a ui-sref="product({id: product._id})">
+                                        <img class="primary-img" src="{{product.imageUrl}}" alt="">
+                                        <img class="secondary-img" src="{{product.images[0].imageUrl}}" alt="">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                    <div class="product-info">
+                                        <h4><a ui-sref="product({id: product._id})">{{product.title}}</a></h4>
+                                        <div class="rating">
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 1}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 2}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 3}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 4}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 5}"></i>
+                                        </div>
+                                        <h5>₦{{product.price}}</h5>
+                                        <button ng-show="!ngCart.getItemById(product._id)" ng-click="ngCart.addItem(product._id, product.title, product.price, qty, product)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                        <a ng-show="ngCart.getItemById(product._id)" class="btn btn-success btn-sm n-a-btn" ng-click="ngCart.removeItemById(product._id)"><i class="fa fa-check"></i> ADDED</a>
+                                        <a class="wishlist" href="#"><i class="fa fa-heart"></i></a>
+                                        <a class="signal" href="#"><i class="fa fa-signal"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="list">
+                        <div class="row product-list">
+                            <div class="col-md-12">
+                                <div class="single-product" ng-repeat="product in products">
+                                    <a ui-sref="product({id: product._id})">
+                                        <img class="primary-img" src="{{product.imageUrl}}" alt="">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                    <div class="product-info">
+                                        <h4><a ui-sref="product({id: product._id})">{{product.title}}</a></h4>
+                                        <div class="rating">
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 1}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 2}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 3}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 4}"></i>
+                                            <i class="fa fa-star" ng-class="{'grey': product.averageRating < 5}"></i>
+                                        </div>
+                                        <h5>₦{{product.price}}</h5>
+                                        <p>{{product.description}}</p>
+                                        <button ng-show="!ngCart.getItemById(product._id)" ng-click="ngCart.addItem(product._id, product.title, product.price, qty, product)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                        <a ng-show="ngCart.getItemById(product._id)" class="btn btn-success btn-sm n-a-btn" ng-click="ngCart.removeItemById(product._id)"><i class="fa fa-check"></i> ADDED</a>
+                                        <a class="wishlist" href="#"><i class="fa fa-heart"></i></a>
+                                        <a class="signal" href="#"><i class="fa fa-signal"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--       <div class="row">
+                        <div class="col-md-12">
+                            <div class="pagination clearfix">
+                                <p>Items 1 to <span>12</span> of <span>48</span> total</p>
+                                <ul>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -1,0 +1,87 @@
+<!--Sidebar Cart Area Start-->
+<div class="sidebar-cart-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-lg-offset-3 col-md-7 col-md-offset-3 hidden-xs">
+                <div class="search-form">
+                    <form id="search-form" action="#">
+                        <div class="categories">
+                            <div class="box-search-select">
+                                <select class="selects" name="category">
+                                    <option value="">All Categories</option>
+                                    <option ng-repeat="category in nav.parentCategories" value="{{category.slug}}">{{category.name | limitTo:15}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="search" placeholder="What do you want to search  . ." name="s" />
+                        <button type="submit"><i class="fa fa-search"></i>Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12">
+                <div class="header-right-menu">
+                    <ul class="header-r-cart">
+                        <li><a class="cart" ui-sref="cart"><i class="fa fa-shopping-cart"></i>Cart : ₦{{ ngCart.totalCost() }}<span>{{ ngCart.getTotalItems() }}</span></a>
+                            <div class="mini-cart-content">
+                                <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+                                    Your cart is empty
+                                </div>
+                                <div ng-show="ngCart.getTotalItems() > 0">
+                                    <div class="mini-top-sec" ng-repeat="item in ngCart.getCart().items track by $index">
+                                        <div class="cart-image">
+                                            <a ui-sref="product({id: item.getId()})"><img alt="" src="{{item.getData().imageUrl}}"></a>
+                                        </div>
+                                        <div class="cart-info">
+                                            <a ui-sref="product({id: item.getId()})"><h4>{{ item.getName() }}</h4></a>
+                                            <h5>₦{{ item.getPrice()}}</h5><span class="quantity"><i class="fa fa-times"></i>&nbsp;&nbsp;{{ item.getQuantity() | number }}&nbsp;&nbsp;</span>
+                                        </div>
+                                        <div class="product-cancel"><a href="#" ng-click="ngCart.removeItemById(item.getId())"><i class="fa fa-times"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="mini-bottom-sec">
+                                        <p class="total-amount">Tax: <span>₦{{ ngCart.getTax()}}</span></p>
+                                        <!-- <p class="total-amount">Shipping: <span>₦{{ ngCart.getShipping()}}</span></p> -->
+                                        <p class="total-amount">Total: <span>₦{{ ngCart.totalCost()}}</span></p>
+                                        <div class="button"><a  ui-sref="checkout">CHECKOUT</a></div>
+                                        <div class="button" ><a ui-sref="cart">View Cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Sidebar Cart Area-->
+<!-- Mobile Menu Area start -->
+<div class="mobile-menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="mobile-menu">
+                    <nav id="dropdown" meanmenu>
+                        <ul>
+                            <li ng-repeat="item in nav.menu" ui-sref-active="active">
+                                <a ui-sref="{{item.state}}">{{item.title}}</a>
+                                <ul ng-show="item.featured">
+                                    <li ng-repeat="f in item.featured" ui-sref-active="active">
+                                        <a ui-sref="{{f.state}}">{{f.title}}</a>
+                                        <ul>
+                                            <li ng-repeat="sub in f.items" ui-sref-active="active">
+                                                <a ui-sref="{{sub.state}}">{{sub.title}}</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mobile Menu Area end -->

@@ -17,6 +17,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/order/order.socket').register(socket);
   require('../api/catalog/catalog.socket').register(socket);
   require('../api/product/product.socket').register(socket);
   // require('../api/product/product.socket').registerImage(socket);

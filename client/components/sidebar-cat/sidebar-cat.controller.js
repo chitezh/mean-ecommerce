@@ -10,7 +10,7 @@ angular.module('bhcmartApp')
         return category.ancestors.length == 0;
       })
       let parentCategories = _.filter(categories, function(category) {
-        return category.ancestors.length == 1;
+        return category.ancestors.length == 1 && category.slug != "upsell-products";
       })
       self.parentCategories = _.map(parentCategories, function(parentCategory) {
         parentCategory.children = _.map(parentCategory.children, function(childId) {

@@ -1,0 +1,62 @@
+<!--Features Tab Area Start-->
+<div class="features-tab-area" ng-repeat="f in main.featuredCategoriesDetailsA">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="features-tab clearfix">
+                    <h3>{{f.title}}</h3>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs navbar-right" role="tablist">
+                        <li role="presentation" ng-repeat="child in f.firstChildren" ng-class="{'active':$first}"><a href="#{{child.slug}}" aria-controls="{{child.title}}" role="tab" data-toggle="tab" my-tab>{{child.title}}</a></li>
+                        <li role="presentation"><a ui-sref="products({slug: f.slug})" aria-controls="view" role="tab" data-toggle="tab"> View all <i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-lg-9 col-md-9">
+                        <div class="tab-content">
+                            <div role="tabpanel" ng-repeat="child in f.firstChildren" ng-class="{'active':$first}" class="tab-pane" id="{{child.slug}}">
+                                <div class="row">
+                                    <div class="single-p-slide-bottom" single-p-slide-bottom>
+                                        <div class="col-md-4" ng-repeat="product in child.products">
+                                            <div class="single-product">
+                                                <a ui-sref="product({id: product._id})">
+                                                    <img class="primary-img" src="{{product.imageUrl}}" alt="">
+                                                    <img class="secondary-img" src="{{product.images[0].imageUrl}}" alt="">
+                                                    <p class="discount" ng-if="product.hot">Hot</p>
+                                                    <p ng-if="product.new">New</p>
+                                                    <i class="fa fa-expand"></i>
+                                                </a>
+                                                <div class="product-info">
+                                                    <h4><a ui-sref="product({id: product._id})">{{product.title}}</a></h4>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star" ng-class="{'grey': product.averageRating < 1}"></i>
+                                                        <i class="fa fa-star" ng-class="{'grey': product.averageRating < 2}"></i>
+                                                        <i class="fa fa-star" ng-class="{'grey': product.averageRating < 3}"></i>
+                                                        <i class="fa fa-star" ng-class="{'grey': product.averageRating < 4}"></i>
+                                                        <i class="fa fa-star" ng-class="{'grey': product.averageRating < 5}"></i>
+                                                    </div>
+                                                    <h5>₦{{product.price}}</h5>
+                                                    <button ng-show="!ngCart.getItemById(product._id)" ng-click="ngCart.addItem(product._id, product.title, product.price, qty, product)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                    <a ng-show="ngCart.getItemById(product._id)" class="btn btn-success btn-sm n-a-btn" ng-click="ngCart.removeItemById(product._id)"><i class="fa fa-check"></i> ADDED</a>
+                                                    <a class="wishlist" href="#"><i class="fa fa-heart"></i></a>
+                                                    <a class="signal" href="#"><i class="fa fa-signal"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 hidden-sm col-xs-12">
+                        <aside class="widget widget-banner white-hover">
+                            <a href="{{f.banner.link}}"><img alt="" src="{{f.banner.img}}"></a>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Features Tab Area-->
