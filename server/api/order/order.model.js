@@ -1,7 +1,11 @@
 'use strict';
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
+var autoIncrement = require('mongoose-auto-increment');
+import config from '../../config/environment';
 var Schema = mongoose.Schema
+
+autoIncrement.initialize(mongoose.createConnection(config.mongo.uri));
 
 var OrderItemSchema = new Schema({
   name: String,
@@ -15,6 +19,7 @@ var OrderItemSchema = new Schema({
 });
 
 var OrderSchema = new Schema({
+  orderNumber: String,
   shipping: Number,
   tax: Number,
   taxRate: Number,
@@ -33,6 +38,13 @@ var OrderSchema = new Schema({
   	type: Date,
   	default: Date.now
   }
+});
+
+OrderSchema.plugin(autoIncrement.plugin, {
+    model: 'Order',
+    field: 'orderNumber',
+    startAt: 400000,
+    incrementBy: 1
 });
 
 export default mongoose.model('Order', OrderSchema);
