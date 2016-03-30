@@ -28,7 +28,11 @@ var OrderSchema = new Schema({
   customerPhone: String,
   customerCity: String,
   customerState: String,
-  customerCountry: String
+  customerCountry: String,
+  created: {
+  	type: Date,
+  	default: Date.now
+  }
 });
 
 export default mongoose.model('Order', OrderSchema);

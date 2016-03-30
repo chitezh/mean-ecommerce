@@ -1,19 +1,9 @@
-<navbar></navbar>
-<!--Breadcrumbs Start-->
-<div class="breadcrumb">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 col-md-offset-3">
-                <ul class="breadcrumb">
-                    <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-                    <li class="active">invoice</li>
-                </ul>
-            </div>
-        </div>
+<div id="invoice-table">
+    <div class="row"> 
+        <a class="btn btn-primary pull-right" print-page href="javascript:void(0)"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Now</a>
     </div>
-</div>
-<!--End of Breadcrumbs-->
-<div class="container" id="invoice-table">
+    <br>
+    <br>
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
@@ -89,7 +79,7 @@
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line text-center"><strong>Tax</strong></td>
-                                    <td class="no-line text-right">{{invoice.tax}}</td>
+                                    <td class="no-line text-right">₦{{invoice.tax}}</td>
                                 </tr>
                                 <tr>
                                     <td class="no-line"></td>
@@ -104,13 +94,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <a class="login-btn pull-right" ui-sref="invoiceprint({id: invoice._id})"  target="_blank"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Preview</a>
-    </div>
-    <br>
 </div>
-<footer></footer>
-
 <style type="text/css">
 .invoice-title h2,
 .invoice-title h3 {
@@ -127,5 +111,11 @@
 
 .table > tbody > tr > .thick-line {
     border-top: 2px solid;
+}
+
+#invoice-table {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
 }
 </style>

@@ -79,10 +79,9 @@ export function show(req, res) {
 // Creates a new Order in the DB
 export function create(req, res) {
   Order.createAsync(req.body)
-    .then(function(entity) {
+    .then(entity => {
       if (entity) {
         _.each(entity.items, function(i) {
-          console.log(i);
           Product.findByIdAsync(i.productId)
             .then(function(product) {
               product.stock -= i.quantity;

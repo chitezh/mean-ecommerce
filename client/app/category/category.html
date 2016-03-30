@@ -104,7 +104,7 @@
                                             <i class="fa fa-star" ng-class="{'grey': product.averageRating < 5}"></i>
                                         </div>
                                         <h5>₦{{product.price}}</h5>
-                                        <button ng-show="!ngCart.getItemById(product._id)" ng-click="ngCart.addItem(product._id, product.title, product.price, qty, product)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                        <button ng-show="!ngCart.getItemById(product._id)" ng-click="ngCart.addItem(product._id, product.title, product.price, 1, product)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                                         <a ng-show="ngCart.getItemById(product._id)" class="btn btn-success btn-sm n-a-btn" ng-click="ngCart.removeItemById(product._id)"><i class="fa fa-check"></i> ADDED</a>
                                         <a class="wishlist" href="#"><i class="fa fa-heart"></i></a>
                                         <a class="signal" href="#"><i class="fa fa-signal"></i></a>
@@ -132,7 +132,7 @@
                                         </div>
                                         <h5>₦{{product.price}}</h5>
                                         <p>{{product.description}}</p>
-                                        <button ng-show="!ngCart.getItemById(product._id)" ng-click="ngCart.addItem(product._id, product.title, product.price, qty, product)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                        <button ng-show="!ngCart.getItemById(product._id)" ng-click="ngCart.addItem(product._id, product.title, product.price, 1, product)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                                         <a ng-show="ngCart.getItemById(product._id)" class="btn btn-success btn-sm n-a-btn" ng-click="ngCart.removeItemById(product._id)"><i class="fa fa-check"></i> ADDED</a>
                                         <a class="wishlist" href="#"><i class="fa fa-heart"></i></a>
                                         <a class="signal" href="#"><i class="fa fa-signal"></i></a>

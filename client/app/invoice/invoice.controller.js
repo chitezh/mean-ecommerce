@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('bhcmartApp')
-  .controller('InvoiceCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+  .controller('InvoiceCtrl', ['$scope', 'Order', '$stateParams', function($scope, Order, $stateParams) {
+    $scope.invoice = Order.get({ id: $stateParams.id });
+  }]);

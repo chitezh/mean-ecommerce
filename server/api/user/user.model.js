@@ -27,7 +27,12 @@ var UserSchema = new Schema({
   facebook: {},
   twitter: {},
   google: {},
-  github: {}
+  github: {},
+  phone: String,
+  address: String,
+  city: String,
+  state: String,
+  country: String
 });
 
 /**

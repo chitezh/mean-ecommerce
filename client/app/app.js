@@ -242,12 +242,15 @@ angular.module('bhcmartApp', [
         }, 0);
       }
     }
-  }).directive('cartPlusMinus', function($timeout) {
+  }).directive('printPage', function($timeout) {
     return {
       link: function(scope, element, attrs) {
         //Product Details Page Plus Minus Button
         $timeout(function() {
-          $(element).append('<div class="dec qtybutton">-</div><div class="inc qtybutton">+</div>');
+          $(element).click(function() {
+            $(this).hide();
+            window.print();
+          });
         }, 0);
       }
     }
@@ -272,7 +275,7 @@ angular.module('bhcmartApp', [
               }
             }
             $button.parent().find("input").val(newVal);
-             angular.element($button.parent().find("input")).triggerHandler('input');
+            angular.element($button.parent().find("input")).triggerHandler('input');
           });
 
         }, 0);

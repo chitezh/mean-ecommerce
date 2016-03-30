@@ -4,7 +4,7 @@ angular.module('bhcmartApp')
   .controller('CheckoutCtrl', ['$scope', 'Auth', '$state', 'Order', 'ngCart', function($scope, Auth, $state, Order, ngCart) {
 
     $scope.user = Auth.getCurrentUser() || {};
-    $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.isLoggedIn = Auth.isLoggedIn();
     $scope.errors = {};
     $scope.submitted = false;
 
@@ -53,9 +53,8 @@ angular.module('bhcmartApp')
 
         Order.save(cart,
           function(resp) {
-            console.log(resp)
             ngCart.empty();
-            $state.go('invoice');
+            $state.go('invoice', {id: resp._id});
           },
           function(err) {
             console.log(err)

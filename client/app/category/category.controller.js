@@ -11,3 +11,4 @@ let getAverageRating = p => Math.ceil(_.reduce(p.reviews, (a, b) => a + b.rating
 let process = $scope => prod => {
   $scope.products = _.map(prod, rP => _.extend(rP, { averageRating: getAverageRating(rP) }));
 }
+

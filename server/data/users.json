@@ -13,5 +13,10 @@
   "email": "admin@example.com",
   "password": "123456",
   "categories": [],
-  "role": "admin"
+  "role": "admin",
+  "address": "No 4 Achival street, Lagoon",
+  "city": "PH",
+  "state": "Imo",
+  "country": "NG",
+  "phone": "08064949432"
 }]
