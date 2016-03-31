@@ -1,0 +1,67 @@
+<navbar></navbar>
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <ul class="breadcrumb">
+                    <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active">my orders</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="product-grid" style="min-height: 200px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="cat-menu">
+                    <ul id="category">
+                        <li class="cat-title" ui-sref-active="active">
+                            <a href="#">My account</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="orders">My orders</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="settings">Change Password</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="alert alert-warning" role="alert" ng-show="orders.length === 0">
+                    You do not have any order
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped" ng-hide="orders.length === 0">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                <td>Order Number</td>
+                                <td>Customer Name</td>
+                                <td>Telephone</td>
+                                <td>Created on</td>
+                                <td>Total</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="o in orders" ng-click="$state.go('invoice', {id: o._id});">
+                                <td>{{$index + 1}}</td>
+                                <td>{{o.orderNumber}}</td>
+                                <td>{{o.customerName}}</td>
+                                <td>{{o.customerPhone}}</td>
+                                <td>{{o.created | date}}</td>
+                                <td>₦{{o.totalCost}}</td>
+                                <td><a ui-sref="invoice({id: o._id})">View <span class="glyphicon glyphicon-eye-open"></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<footer></footer>

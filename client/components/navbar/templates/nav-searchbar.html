@@ -42,8 +42,8 @@
                                         <p class="total-amount">Tax: <span>₦{{ ngCart.getTax()}}</span></p>
                                         <!-- <p class="total-amount">Shipping: <span>₦{{ ngCart.getShipping()}}</span></p> -->
                                         <p class="total-amount">Total: <span>₦{{ ngCart.totalCost()}}</span></p>
-                                        <div class="button"><a  ui-sref="checkout">CHECKOUT</a></div>
-                                        <div class="button" ><a ui-sref="cart">View Cart</a></div>
+                                        <div class="button"><a ui-sref="checkout">CHECKOUT</a></div>
+                                        <div class="button"><a ui-sref="cart">View Cart</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +77,20 @@
                                 </ul>
                             </li>
                             <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user"></i>
+                                    <span ng-hide="nav.isLoggedIn()">Account</span>
+                                    <span ng-show="nav.isLoggedIn()">Hello {{ nav.getCurrentUser().name }} </span>
+                                </a>
+                                <ul>
+                                    <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Register</a></li>
+                                    <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+                                    <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="orders"><span class="glyphicon glyphicon-tasks"></span> My Orders</a></li>
+                                    <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Change password </a></li>
+                                    <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>

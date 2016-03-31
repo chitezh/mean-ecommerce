@@ -67,6 +67,12 @@ export function index(req, res) {
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
+// Gets a list of user Orders
+export function myOrders(req, res) {
+  Order.findAsync({ customerId: req.params.id })
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+}
 
 // Gets a single Order from the DB
 export function show(req, res) {
