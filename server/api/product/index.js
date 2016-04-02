@@ -12,7 +12,7 @@ var router = express.Router();
 // product
 router.post('/:id/upload', multiparty(uploadOptions), controller.upload);
 router.get('/', controller.index);
-router.get('/:id', controller.show);
+router.get('/:slug', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);

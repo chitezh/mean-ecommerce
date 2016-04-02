@@ -88,7 +88,7 @@ function productsInCategory(limit) {
         }
       })
       .limit(limit)
-      .populate({path:'categories', select: 'name'})
+      .populate({ path: 'categories', select: 'name' })
       .populate({ path: 'reviews', select: 'rating' })
       .populate({ path: 'images', select: 'imageUrl' })
       .exec();
@@ -104,7 +104,9 @@ exports.index = function(req, res) {
 
 // Gets a single Product from the DB
 exports.show = function(req, res) {
-  Product.findOne({ _id: req.params.id })
+  Product.findOne({
+      slug: req.params.slug
+    })
     .populate('images')
     .populate({ path: 'reviews' }).populate({ path: 'categories', select: 'slug' })
     .execAsync()

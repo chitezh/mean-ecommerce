@@ -32,7 +32,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-small">
+                                <div class="product-small" ng-if="product.images.length > 0">
                                     <ul class="nav nav-tabs bxslider" role="tablist" bxslider>
                                         <li class="active">
                                             <a href="#img-1" data-toggle="tab" my-tab>
@@ -231,13 +231,13 @@
                         <div class="single-p-slide-bottom" single-p-slide-bottom>
                             <div class="col-md-4" ng-repeat="upsell in upsellProducts">
                                 <div class="single-product">
-                                    <a ui-sref="product({id: upsell._id})">
+                                    <a ui-sref="product({id: upsell.slug})">
                                         <img class="primary-img" src="{{upsell.imageUrl}}" alt="">
                                         <img class="secondary-img" src="{{upsell.images[0].imageUrl}}" alt="">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                     <div class="product-info">
-                                        <h4><a ui-sref="product({id: upsell._id})">{{upsell.title}}</a></h4>
+                                        <h4><a ui-sref="product({id: upsell.slug})">{{upsell.title}}</a></h4>
                                         <div class="rating">
                                             <i class="fa fa-star" ng-class="{'grey': upsell.averageRating < 1}"></i>
                                             <i class="fa fa-star" ng-class="{'grey': upsell.averageRating < 2}"></i>
@@ -260,12 +260,12 @@
                     </div>
                     <div class="single-news" ng-repeat="p in relatedProducts">
                         <div class="single-image">
-                            <a ui-sref="product({id: p._id})">
+                            <a ui-sref="product({id: p.slug})">
                                 <img src="{{p.imageUrl}}" alt="">
                             </a>
                         </div>
                         <div class="product-info">
-                            <h4><a ui-sref="product({id: p._id})">{{p.title}}</a></h4>
+                            <h4><a ui-sref="product({id: p.slug})">{{p.title}}</a></h4>
                             <h5>₦{{p.price}}</h5>
                             <div class="rating">
                                 <i class="fa fa-star" ng-class="{'grey': p.averageRating < 1}"></i>

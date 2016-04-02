@@ -89,13 +89,13 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" ng-repeat="product in products">
                                 <div class="single-product">
-                                    <a ui-sref="product({id: product._id})">
+                                    <a ui-sref="product({id: product.slug})">
                                         <img class="primary-img" src="{{product.imageUrl}}" alt="">
                                         <img class="secondary-img" src="{{product.images[0].imageUrl}}" alt="">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                     <div class="product-info">
-                                        <h4><a ui-sref="product({id: product._id})">{{product.title}}</a></h4>
+                                        <h4><a ui-sref="product({id: product.slug})">{{product.title}}</a></h4>
                                         <div class="rating">
                                             <i class="fa fa-star" ng-class="{'grey': product.averageRating < 1}"></i>
                                             <i class="fa fa-star" ng-class="{'grey': product.averageRating < 2}"></i>
@@ -117,12 +117,12 @@
                         <div class="row product-list">
                             <div class="col-md-12">
                                 <div class="single-product" ng-repeat="product in products">
-                                    <a ui-sref="product({id: product._id})">
+                                    <a ui-sref="product({id: product.slug})">
                                         <img class="primary-img" src="{{product.imageUrl}}" alt="">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                     <div class="product-info">
-                                        <h4><a ui-sref="product({id: product._id})">{{product.title}}</a></h4>
+                                        <h4><a ui-sref="product({id: product.slug})">{{product.title}}</a></h4>
                                         <div class="rating">
                                             <i class="fa fa-star" ng-class="{'grey': product.averageRating < 1}"></i>
                                             <i class="fa fa-star" ng-class="{'grey': product.averageRating < 2}"></i>

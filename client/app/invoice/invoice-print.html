@@ -1,5 +1,5 @@
 <div id="invoice-table">
-    <div class="row"> 
+    <div class="row">
         <a class="btn btn-primary pull-right" print-page href="javascript:void(0)"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Now</a>
     </div>
     <br>
@@ -57,7 +57,7 @@
                             <thead>
                                 <tr>
                                     <td><strong>Item</strong></td>
-                                    <td class="text-center"><strong>Price</strong></td>
+                                    <td class="text-left"><strong>Price</strong></td>
                                     <td class="text-center"><strong>Quantity</strong></td>
                                     <td class="text-right"><strong>Totals</strong></td>
                                 </tr>
@@ -65,7 +65,7 @@
                             <tbody>
                                 <tr ng-repeat="item in invoice.items">
                                     <td>{{item.name}}</td>
-                                    <td class="text-center">₦{{item.price}}</td>
+                                    <td class="text-left">₦{{item.price}}</td>
                                     <td class="text-center">{{item.quantity}}</td>
                                     <td class="text-right">₦{{item.total}}</td>
                                 </tr>
@@ -117,5 +117,9 @@
     width: 80%;
     margin: 0 auto;
     margin-top: 40px;
+}
+
+.panel-heading {
+    padding-top: 10px !important;
 }
 </style>

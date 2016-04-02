@@ -4,21 +4,6 @@
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-5">
                 <ul class="header-left-top header-menu">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user"></i>
-                            <span ng-hide="nav.isLoggedIn()">Account</span>
-                            <span ng-show="nav.isLoggedIn()">Hello {{ nav.getCurrentUser().name }} </span>
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <ul class="header-dropdown">
-                            <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Register</a></li>
-                            <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-                            <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="orders"><span class="glyphicon glyphicon-tasks"></span> My Orders</a></li>
-                            <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Change password </a></li>
-                            <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-                        </ul>
-                    </li>
                     <li><a href="#"><i class="fa fa-globe"></i>English <i class="fa fa-angle-down"></i></a>
                         <!--   <ul class="header-dropdown">
                             <li><a href="#">French</a></li>
@@ -35,7 +20,7 @@
                 </ul>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7">
-                <div class="header-right-top">
+                <div class="header-right-top top-area">
                     <div class="header-s-icons">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
@@ -45,11 +30,32 @@
                         <a href="#"><i class="fa fa-google-plus"></i></a>
                     </div>
                     <div class="header-contact-info">
-                        <p><i class="fa fa-mobile"></i>Phone: (+234) 806-494-9432</p>
+                        <ul class="header-left-top header-menu">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user"></i>
+                                    <span ng-hide="nav.isLoggedIn()">Account</span>
+                                    <span ng-show="nav.isLoggedIn()">Hello {{ nav.getCurrentUser().name }} </span>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="header-dropdown">
+                                    <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Register</a></li>
+                                    <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+                                    <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="orders"><span class="glyphicon glyphicon-tasks"></span> My Orders</a></li>
+                                    <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Change password </a></li>
+                                    <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<style type="text/css">
+    .top-area {
+        padding: 0px 0px !important;
+    }
+</style>
 <!--End of Header Top Area-->

@@ -67,7 +67,7 @@
                             <thead>
                                 <tr>
                                     <td><strong>Item</strong></td>
-                                    <td class="text-center"><strong>Price</strong></td>
+                                    <td class="text-left"><strong>Price</strong></td>
                                     <td class="text-center"><strong>Quantity</strong></td>
                                     <td class="text-right"><strong>Totals</strong></td>
                                 </tr>
@@ -75,7 +75,7 @@
                             <tbody>
                                 <tr ng-repeat="item in invoice.items">
                                     <td>{{item.name}}</td>
-                                    <td class="text-center">₦{{item.price}}</td>
+                                    <td class="text-left">₦{{item.price}}</td>
                                     <td class="text-center">{{item.quantity}}</td>
                                     <td class="text-right">₦{{item.total}}</td>
                                 </tr>
@@ -105,12 +105,11 @@
         </div>
     </div>
     <div class="row">
-        <a class="login-btn pull-right" ui-sref="invoiceprint({id: invoice._id})"  target="_blank"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Preview</a>
+        <a class="login-btn pull-right" ui-sref="invoiceprint({id: invoice._id})" target="_blank"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Preview</a>
     </div>
     <br>
 </div>
 <footer></footer>
-
 <style type="text/css">
 .invoice-title h2,
 .invoice-title h3 {
@@ -127,5 +126,9 @@
 
 .table > tbody > tr > .thick-line {
     border-top: 2px solid;
+}
+
+.panel-heading {
+    padding-top: 10px !important;
 }
 </style>

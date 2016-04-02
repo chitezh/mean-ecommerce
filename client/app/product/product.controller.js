@@ -8,10 +8,13 @@ angular.module('bhcmartApp')
         $scope.upsellProducts = _.map(upsellProducts, upsellProduct => _.extend(upsellProduct, { averageRating: getAverageRating(upsellProduct) }));
       });
 
+      //Get product and fetch related products based on category
       $scope.product = Product.get({ id: $stateParams.id }, function(p) {
         $scope.product.averageRating = getAverageRating(p);
-        Product.catalog({ id: p.categories[0].slug, limit: 4 }, function(relatedProducts) {
-          $scope.relatedProducts = _.map(relatedProducts, relatedProduct => _.extend(relatedProduct, { averageRating: getAverageRating(relatedProduct) }));
+        Product.catalog({ id: p.categories[0].slug, limit: 6 }, function(relatedProducts) {
+          $scope.relatedProducts = _.filter(
+            _.map(relatedProducts, relatedProduct =>
+              _.extend(relatedProduct, { averageRating: getAverageRating(relatedProduct) })), rp => rp._id != p._id);
         });
       });
 
