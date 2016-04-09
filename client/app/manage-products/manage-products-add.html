@@ -1,0 +1,96 @@
+<navbar></navbar>
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <ul class="breadcrumb">
+                    <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active">add-product</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="product-grid" style="min-height: 200px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <sidebar-account></sidebar-account>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <form class="form" name="form" ng-submit="save(form)" novalidate>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="name" class="form-control" ng-model="product.title" required/>
+                        <p class="help-block" ng-show="form.name.$error.required">
+                            Title is required
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="name" class="form-control" ng-model="product.description" required></textarea>
+                        <p class="help-block" ng-show="form.name.$error.required">
+                            Description is required
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Price(₦)</label>
+                            <input type="text" name="price" class="form-control" ng-model="product.price" required/>
+                            <p class="help-block" ng-show="form.price.$error.required">
+                                Price is required
+                            </p>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Stock</label>
+                            <input type="text" name="stock" class="form-control" ng-model="product.stock" required/>
+                            <p class="help-block" ng-show="form.stock.$error.required">
+                                Stock is required
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group" <label>Categories</label>
+                        <select class="form-control" name="categories" ng-model="product.categories" data-live-search="true">
+                            <option ng-repeat="cat in categories" value="{{cat._id}}">{{cat.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="product.hot"> Hot
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="product.new"> New
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="product.featured"> Featured
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-success': form.imageUrl.$valid && submitted,
+                                            'has-error': form.imageUrl.$invalid && submitted }">
+                        <label class="form-label" for="imageUrl">Featured Image</label>
+                        <span class="desc"></span>
+                        <div class="controls">
+                            <input type="file" ng-hide="imageUrl" ngf-select="upload($file, $invalidFiles)" ng-model="imageUrl" name="imageUrl" accept="image/*" ngf-max-size="1MB" ngf-resize="{width: 606, height: 780, quality: .8, type: 'image/jpeg', centerCrop: true, restoreExif: false}" ngf-model-invalid="errorFile"/>
+                            <i ng-show="form.imageUrl.$error.required">*required</i>
+                            <i ng-show="form.imageUrl.$error.maxSize">File too large  {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                            <img ng-show="form.imageUrl.$valid" ngf-thumbnail="imageUrl" class="thumb">
+                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                            <div ng-show="imageUrl" class="remove-btn">
+                                <button class="btn btn-danger btn-xs" ng-click="imageUrl = null"> <span class="glyphicon glyphicon-trash"></span> Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="help-block"> {{ message }} </p>
+                    <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<footer></footer>

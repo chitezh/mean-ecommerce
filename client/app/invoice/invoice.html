@@ -13,110 +13,121 @@
     </div>
 </div>
 <!--End of Breadcrumbs-->
-<div class="container" id="invoice-table">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="invoice-title">
-                <h2>Invoice</h2>
-                <h3 class="pull-right">Order #{{invoice.orderNumber}}</h3>
+<section class="product-grid" style="min-height: 200px">
+    <div class="container" id="invoice-table">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <sidebar-account></sidebar-account>
             </div>
-            <hr>
-            <div class="row">
-                <div class="col-xs-6">
-                    <address>
-                        <strong>Billed To:</strong>
-                        <br> {{invoice.customerName}}
-                        <br> {{invoice.customerAddress}}
-                        <br> {{invoice.customerCity}}
-                        <br> {{invoice.customerState}}&nbsp;{{invoice.customerCountry}}
-                    </address>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <address>
-                        <strong>Shipped To:</strong>
-                        <br> {{invoice.customerName}}
-                        <br> {{invoice.customerAddress}}
-                        <br> {{invoice.customerCity}}
-                        <br> {{invoice.customerState}}&nbsp;{{invoice.customerCountry}}
-                    </address>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <address>
-                        <strong>Delivery Status:</strong>
-                        <br>
-                        <span ng-show="invoice.delivered">Delivered</span>
-                        <span ng-hide="invoice.delivered">Pending</span>
-                        <br>
-                        <br>
-                    </address>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <address>
-                        <strong>Order Date:</strong>
-                        <br> {{invoice.created | date}}
-                        <br>
-                        <br>
-                    </address>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Order summary</strong></h3>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <td><strong>Item</strong></td>
-                                    <td class="text-left"><strong>Price</strong></td>
-                                    <td class="text-center"><strong>Quantity</strong></td>
-                                    <td class="text-right"><strong>Totals</strong></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in invoice.items">
-                                    <td>{{item.name}}</td>
-                                    <td class="text-left">₦{{item.price}}</td>
-                                    <td class="text-center">{{item.quantity}}</td>
-                                    <td class="text-right">₦{{item.total}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="thick-line"></td>
-                                    <td class="thick-line"></td>
-                                    <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                    <td class="thick-line text-right">₦{{invoice.subTotal}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="no-line"></td>
-                                    <td class="no-line"></td>
-                                    <td class="no-line text-center"><strong>Tax</strong></td>
-                                    <td class="no-line text-right">{{invoice.tax}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="no-line"></td>
-                                    <td class="no-line"></td>
-                                    <td class="no-line text-center"><strong>Total</strong></td>
-                                    <td class="no-line text-right">₦{{invoice.totalCost}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="invoice-title">
+                            <h2>Invoice</h2>
+                            <h3 class="pull-right">Order #{{invoice.orderNumber}}</h3>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <address>
+                                    <strong>Billed To:</strong>
+                                    <br> {{invoice.customerName}}
+                                    <br> {{invoice.customerPhone}}
+                                    <br> {{invoice.customerAddress}}
+                                    <br> {{invoice.customerCity}}
+                                    <br> {{invoice.customerState}}&nbsp;{{invoice.customerCountry}}
+                                </address>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <address>
+                                    <strong>Shipped To:</strong>
+                                    <br> {{invoice.customerName}}
+                                    <br> {{invoice.customerPhone}}
+                                    <br> {{invoice.customerAddress}}
+                                    <br> {{invoice.customerCity}}
+                                    <br> {{invoice.customerState}}&nbsp;{{invoice.customerCountry}}
+                                </address>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <address>
+                                    <strong>Delivery Status:</strong>
+                                    <br>
+                                    <span ng-show="invoice.delivered">Delivered</span>
+                                    <span ng-hide="invoice.delivered">Pending</span>
+                                    <br>
+                                    <br>
+                                </address>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <address>
+                                    <strong>Order Date:</strong>
+                                    <br> {{invoice.created | date}}
+                                    <br>
+                                    <br>
+                                </address>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><strong>Order summary</strong></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <td><strong>Item</strong></td>
+                                                <td class="text-left"><strong>Price</strong></td>
+                                                <td class="text-center"><strong>Quantity</strong></td>
+                                                <td class="text-right"><strong>Totals</strong></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in invoice.items">
+                                                <td>{{item.name}}</td>
+                                                <td class="text-left">₦{{item.price}}</td>
+                                                <td class="text-center">{{item.quantity}}</td>
+                                                <td class="text-right">₦{{item.total}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="thick-line"></td>
+                                                <td class="thick-line"></td>
+                                                <td class="thick-line text-center"><strong>Subtotal</strong></td>
+                                                <td class="thick-line text-right">₦{{invoice.subTotal}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="no-line"></td>
+                                                <td class="no-line"></td>
+                                                <td class="no-line text-center"><strong>Tax</strong></td>
+                                                <td class="no-line text-right">{{invoice.tax}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="no-line"></td>
+                                                <td class="no-line"></td>
+                                                <td class="no-line text-center"><strong>Total</strong></td>
+                                                <td class="no-line text-right">₦{{invoice.totalCost}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <a class="login-btn pull-right" ui-sref="invoiceprint({id: invoice._id})" target="_blank"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Preview</a>
+                </div>
+                <br>
             </div>
         </div>
     </div>
-    <div class="row">
-        <a class="login-btn pull-right" ui-sref="invoiceprint({id: invoice._id})" target="_blank"><span class="glyphicon glyphicon-print"></span> &nbsp;Print Preview</a>
-    </div>
-    <br>
-</div>
+</section>
 <footer></footer>
 <style type="text/css">
 .invoice-title h2,

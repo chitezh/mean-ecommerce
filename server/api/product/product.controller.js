@@ -97,7 +97,7 @@ function productsInCategory(limit) {
 
 // Gets a list of Products
 exports.index = function(req, res) {
-  Product.findAsync()
+  Product.find().sort({ stock: 1 }).populate({ path: "categories", select: "name" }).execAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 };

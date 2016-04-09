@@ -66,12 +66,6 @@ class NavbarController {
         'state': 'products.detail({slug: "1"})'
       }]
     }]
-  }, {
-    'title': 'About Us',
-    'state': 'about'
-  }, {
-    'title': 'Contact Us',
-    'state': 'contact'
   }];
 
 

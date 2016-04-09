@@ -1,18 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/orders              ->  index
- * POST    /api/orders              ->  create
- * GET     /api/orders/:id          ->  show
- * PUT     /api/orders/:id          ->  update
- * DELETE  /api/orders/:id          ->  destroy
+ * GET     /api/requests              ->  index
+ * POST    /api/requests              ->  create
+ * GET     /api/requests/:id          ->  show
+ * PUT     /api/requests/:id          ->  update
+ * DELETE  /api/requests/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-var Order = require('./order.model');
-var Product = require('../product/product.model').product;
-
+var Request = require('./request.model');
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -61,61 +59,50 @@ function removeEntity(res) {
   };
 }
 
-// Gets a list of Orders
+// Gets a list of Requests
 export function index(req, res) {
-  Order.findAsync()
+  Request.findAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a list of user Orders
-export function myOrders(req, res) {
-  Order.findAsync({ customerId: req.params.id })
+// Gets a list of user requests
+export function myRequests(req, res) {
+  Request.findAsync({ customerId: req.params.id })
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Order from the DB
+// Gets a single Request from the DB
 export function show(req, res) {
-  Order.findByIdAsync(req.params.id)
+  Request.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Order in the DB
+// Creates a new Request in the DB
 export function create(req, res) {
-  Order.createAsync(req.body)
-    .then(entity => {
-      if (entity) {
-        _.each(entity.items, function(i) {
-          Product.findByIdAsync(i.productId)
-            .then(function(product) {
-              product.stock -= i.quantity;
-              product.saveAsync();
-            });
-        })
-        res.status(201).json(entity);
-      }
-    })
+  Request.createAsync(req.body)
+    .then(responseWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Order in the DB
+// Updates an existing Request in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  Order.findByIdAsync(req.params.id)
+  Request.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Order from the DB
+// Deletes a Request from the DB
 export function destroy(req, res) {
-  Order.findByIdAsync(req.params.id)
+  Request.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

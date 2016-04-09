@@ -5,7 +5,7 @@
             <div class="col-md-7 col-md-offset-3">
                 <ul class="breadcrumb">
                     <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
-                    <li class="active">manage-requests</li>
+                    <li class="active">requests</li>
                 </ul>
             </div>
         </div>
@@ -18,6 +18,43 @@
                 <sidebar-account></sidebar-account>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="alert alert-warning" role="alert" ng-show="requests.length === 0">
+                    You do not have any request
+                </div>
+                <div class="table-responsive" ng-hide="requests.length === 0">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                <td>Request Number</td>
+                                <td>Customer Name</td>
+                                <td>Telephone</td>
+                                <td>Status</td>
+                                <td>Submitted on</td>
+                                <td class="text-center" colspan="2">Actions</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="o in requests" class="table-col">
+                                <td>{{$index + 1}}</td>
+                                <td>{{o.requestNumber}}</td>
+                                <td>{{o.customerName}}</td>
+                                <td>{{o.customerPhone}}</td>
+                                <td>
+                                    <span ng-show="o.processed">Processed</span>
+                                    <span ng-hide="o.processed">Pending</span>
+                                </td>
+                                <td>{{o.created | date}}</td>
+                                <td>
+
+                                    <a ui-sref="view-request({id: o._id})" class="btn btn-primary"> <span class="glyphicon glyphicon-eye-open"></span></a>
+                                </td>
+                                <td ng-show="isAdmin"> <a ng-click=" deliverRequest('Request ' + '#' + o.requestNumber, o)" class="yellow"><span class="fa fa-key fa-2x"></span></a></td>
+                                <td ng-show="isAdmin"> <a ng-click="deleteRequest('Request ' + '#' + o.requestNumber, o)" class="trash"><span class="fa fa-trash fa-2x"></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -11,7 +11,8 @@ angular.module('bhcmartApp', [
     'btford.socket-io',
     'ui.router',
     'validation.match',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngFileUpload'
   ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
@@ -32,6 +33,7 @@ angular.module('bhcmartApp', [
     ngCart.setShipping(0);
     $rootScope.ngCart = ngCart;
     $rootScope.$state = $state;
+    $rootScope._ = _;
   })
   .directive('myTab', function($timeout) {
     return {

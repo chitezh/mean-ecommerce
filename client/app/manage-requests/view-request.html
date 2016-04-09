@@ -1,0 +1,125 @@
+<navbar></navbar>
+<!--Breadcrumbs Start-->
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active">request</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Breadcrumbs-->
+<section class="product-grid" style="min-height: 200px">
+    <div class="container" id="request-table">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <sidebar-account></sidebar-account>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="request-title">
+                            <h2>Request</h2>
+                            <h3 class="pull-right">Request #{{request.requestNumber}}</h3>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <address>
+                                    <strong>Raised By:</strong>
+                                    <br> {{request.customerName}}
+                                    <br> {{request.customerPhone}}
+                                    <br> {{request.customerAddress}}
+                                    <br> {{request.customerCity}}
+                                    <br> {{request.customerState}}&nbsp;{{request.customerCountry}}
+                                </address>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <address>
+                                    <strong>Status:</strong>
+                                    <br>
+                                    <span ng-show="request.processed">Processed</span>
+                                    <span ng-hide="request.processed">Pending</span>
+                                    <br>
+                                    <br>
+                                </address>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <address>
+                                    <strong>Request Date:</strong>
+                                    <br> {{request.created | date}}
+                                    <br>
+                                    <br>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><strong>Request Detail</strong></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <td><strong>Product Description</strong></td>
+                                                <td class="text-left"><strong>Suggested Price</strong></td>
+                                                <td class="text-center"><strong>Quantity</strong></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in request.items">
+                                                <td>{{item.description}}</td>
+                                                <td class="text-left">₦{{item.price}}</td>
+                                                <td class="text-center">{{item.quantity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="thick-line"></td>
+                                                <td class="thick-line"></td>
+                                                <td class="thick-line"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</section>
+<footer></footer>
+<style type="text/css">
+.request-title h2,
+.request-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+
+.panel-heading {
+    padding-top: 10px !important;
+}
+</style>

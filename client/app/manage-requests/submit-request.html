@@ -1,0 +1,245 @@
+<navbar></navbar>
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <ul class="breadcrumb">
+                    <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active">submit-request</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="product-grid checkout-area" style="min-height: 200px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <sidebar-account></sidebar-account>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#checkout">
+                                            1. USER ACCOUNT
+                                        </a>
+                                    </h4>
+                        </div>
+                        <div id="checkout" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body row" ng-show="isLoggedIn">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-checkout">
+                                        <h2 class="light">You are logged in, Please, proceed to the section below</h2>
+                                    </div>
+                                </div>
+                                <!-- <a href="#shipping" class="c-btn">Continue</a> -->
+                            </div>
+                            <div class="panel-body row" ng-hide="isLoggedIn">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-checkout">
+                                        <h2 class="border-down">Submit list as a guest or register</h2>
+                                        <p class="heading-p">Register with us for future convenience</p>
+                                        <form action="#">
+                                            <label>
+                                                <input type="radio" name="check" value="guest" checked="checked">
+                                                <span>Submit as Guest</span>
+                                            </label>
+                                            <label>
+                                                <input ng-click="$state.go('signup')" type="radio" name="check" value="user">
+                                                <span>Register</span>
+                                            </label>
+                                        </form>
+                                    </div>
+                                    <div class="single-checkout">
+                                        <h2 class="light">Register and save time !</h2>
+                                        <p class="heading-p">Register with us for future convenience</p>
+                                        <p class="r-with-us">Fast and easy checkout</p>
+                                        <p class="r-with-us">Easy access to your order history and status</p>
+                                        <a href="#shipping" class="c-btn">Continue</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-checkout right">
+                                        <h2 class="border-down">Login</h2>
+                                        <p class="heading-p">Already Registered?</p>
+                                        <p class="r-with-us">Please log in below :</p>
+                                        <div class="login-form">
+                                            <form class="form" name="form1" ng-submit="login(form1)" novalidate>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="email" name="email" class="form-control" ng-model="user.email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Password</label>
+                                                    <input type="password" name="password" class="form-control" ng-model="user.password" required>
+                                                </div>
+                                                <div class="form-group has-error">
+                                                    <p class="help-block" ng-show="form1.email.$error.required && form1.password.$error.required && submitted">
+                                                        Please enter your email and password.
+                                                    </p>
+                                                    <p class="help-block" ng-show="form1.email.$error.email && submitted">
+                                                        Please enter a valid email.
+                                                    </p>
+                                                    <p class="help-block" ng-if="errors.other">{{ errors.other }}</p>
+                                                </div>
+                                                <input class="login-btn" type="submit" id="submit" value="Login">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#shipping">
+                                            2. CONTACT INFORMATION
+                                        </a>
+                                    </h4>
+                        </div>
+                        <div id="shipping" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <div class="login-form">
+                                    <form class="form" name="form" ng-submit="validate(form)" novalidate>
+                                        <div class="form-group has-error">
+                                            <p class="help-block" ng-show="form.name.$error.required && submitted">
+                                                Please enter your name
+                                            </p>
+                                            <p class="help-block" ng-show="form.email.$error.required && submitted">
+                                                Please enter your email
+                                            </p>
+                                            <p class="help-block" ng-show="form.phone.$error.required && submitted">
+                                                Please enter your phone number
+                                            </p>
+                                            <p class="help-block" ng-show="form.address.$error.required && submitted">
+                                                Please enter your address
+                                            </p>
+                                            <p class="help-block" ng-show="form.city.$error.required && submitted">
+                                                Please enter your city
+                                            </p>
+                                            <p class="help-block" ng-show="form.state.$error.required && submitted">
+                                                Please enter your state
+                                            </p>
+                                            <p class="help-block" ng-show="form.country.$error.required && submitted">
+                                                Please enter your country
+                                            </p>
+                                        </div>
+                                        <div class="customer-name">
+                                            <div class="first-name">
+                                                <p>Name<span>*</span></p>
+                                                <input type="text" required ng-model="user.name" name="name">
+                                            </div>
+                                            <div class="email-address">
+                                                <p>Email Adress<span>*</span></p>
+                                                <input type="email" required ng-model="user.email" name="email">
+                                            </div>
+                                            <div class="telephone">
+                                                <p>Telephone<span>*</span></p>
+                                                <input type="text" required ng-model="user.phone" name="phone">
+                                            </div>
+                                        </div>
+                                        <p>Address<span>*</span></p>
+                                        <textarea ng-model="user.address" class="yourmessage" required name="address"></textarea>
+                                        <div class="city-country">
+                                            <div class="city">
+                                                <p>City<span>*</span></p>
+                                                <input type="text" ng-model="user.city" required name="city">
+                                            </div>
+                                            <div class="state">
+                                                <p>State/Province</p>
+                                                <select class="country" ng-model="user.state" name="state">
+                                                    <option value="state">Please select region, state or province</option>
+                                                    <option value="lagos">Lagos</option>
+                                                    <option value="rivers">Rivers</option>
+                                                </select>
+                                            </div>
+                                            <div class="state" style="margin-left: 5px;">
+                                                <p>Country<span>*</span></p>
+                                                <select class="country" ng-model="user.country" name="country" required>
+                                                    <option value="GH">Ghana</option>
+                                                    <option selected="selected" value="NG">Nigeria</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-error" ng-if="success">
+                                            <p class="text-success">{{success}}</p>
+                                        </div>
+                                        <button href="#" ng-hide="form.$valid && submitted" class="login-btn">Validate</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingSix">
+                            <h4 class="panel-title">
+                                        <a class="collapsed disabled" role="button" data-toggle="collapse" data-parent="#accordion" href="#fill-form">
+                                            3. FILl LIST FORM AND SUBMIT
+                                        </a>
+                                    </h4>
+                        </div>
+                        <div id="fill-form" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                <div class="form-group has-error" ng-if="message">
+                                    <p class="help-block">{{message}}</p>
+                                </div>
+                                <div class="alert alert-warning" role="alert" ng-show="items.length === 0 && !message">
+                                    You do not have any item on your list. Add items below
+                                </div>
+                                <div class="checkout-table table-responsive">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="pull-left" colspan="1">Product Description</th>
+                                                <th class="p-amount" colspan="1">Suggested Price</th>
+                                                <th class="p-amount" colspan="1">Qty</th>
+                                                <th class="p-amount" colspan="1">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in items track by $index">
+                                                <td class="p-name">{{item.description}}</td>
+                                                <td class="p-amount text-center"><span class="amount">₦{{item.price}}</span></td>
+                                                <td class="p-amount text-center">{{item.quantity}}</td>
+                                                <td>
+                                                    <div>
+                                                        <button class="btn btn-sm btn-danger" ng-click="removeFromList($index)"><span class="fa fa-trash fa-2x"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-6">
+                                                    <textarea type="text" class="form-control" ng-model="newItem.description" required></textarea>
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control" ng-model="newItem.price" required/>
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control" ng-model="newItem.quantity" required/>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <button class="btn btn-sm btn-success" ng-click="addToList(newItem)"><span class="fa fa-plus fa-2x"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="checkout-buttons">
+                                        <button class="login-btn" ng-hide="items.length == 0" ng-click="submitList(items, user)">Submit List</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer></footer>

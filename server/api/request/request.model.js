@@ -1,35 +1,26 @@
 'use strict';
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
+import { Schema } from 'mongoose';
 var autoIncrement = require('mongoose-auto-increment');
 import config from '../../config/environment';
-var Schema = mongoose.Schema
 
 autoIncrement.initialize(mongoose.createConnection(config.mongo.uri));
 
-var OrderItemSchema = new Schema({
-  name: String,
+
+var RequestItemSchema = new Schema({
+  description: String,
   price: Number,
-  quantity: Number,
-  total: Number,
-  productId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Product'
-  }
+  quantity: Number
 });
 
-var OrderSchema = new Schema({
-  orderNumber: String,
-  shipping: Number,
-  tax: Number,
-  taxRate: Number,
-  subTotal: Number,
-  totalCost: Number,
-  items: [OrderItemSchema],
+var RequestSchema = new Schema({
+  requestNumber: String,
   customerId: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: "User"
   },
+  items: [RequestItemSchema],
   customerName: String,
   customerEmail: String,
   customerAddress: String,
@@ -37,7 +28,7 @@ var OrderSchema = new Schema({
   customerCity: String,
   customerState: String,
   customerCountry: String,
-  delivered: {
+  processed: {
     type: Boolean,
     default: false
   },
@@ -47,11 +38,11 @@ var OrderSchema = new Schema({
   }
 });
 
-OrderSchema.plugin(autoIncrement.plugin, {
-  model: 'Order',
-  field: 'orderNumber',
-  startAt: 400000,
+RequestSchema.plugin(autoIncrement.plugin, {
+  model: 'Request',
+  field: 'requestNumber',
+  startAt: 700000,
   incrementBy: 1
 });
 
-export default mongoose.model('Order', OrderSchema);
+export default mongoose.model('Request', RequestSchema);

@@ -15,6 +15,23 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
+.thumb {
+  width: 100px;
+  height: 100px;
+  float: none;
+  position: relative;
+  top: 7px;
+  margin-bottom: 20px;
+}
+
+form .progress {
+  line-height: 15px;
+}
+
+.remove-btn {
+  padding-top: 20px;
+}
+
 .form-action.account {
   display: flex;
 }
