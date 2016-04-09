@@ -34,6 +34,10 @@ var OrderSchema = new Schema({
   customerCity: String,
   customerState: String,
   customerCountry: String,
+  delivered: {
+    type: Boolean,
+    default: false
+  },
   created: {
   	type: Date,
   	default: Date.now

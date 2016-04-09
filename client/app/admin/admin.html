@@ -1,14 +1,42 @@
 <navbar></navbar>
-
-<div class="container">
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group user-list">
-    <li class="list-group-item" ng-repeat="user in admin.users">
-	    <div class="user-info">
-	        <strong>{{user.name}}</strong><br>
-	        <span class="text-muted">{{user.email}}</span>
-	    </div>
-        <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-    </li>
-  </ul>
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <ul class="breadcrumb">
+                    <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+<section class="product-grid" style="min-height: 200px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <sidebar-account></sidebar-account>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <ul class="list-group user-list">
+                    <li class="list-group-item" ng-repeat="user in admin.users">
+                        <div class="user-info">
+                            <strong>{{user.name}}</strong>
+                            <br>
+                            <span class="text-muted">{{user.email}}</span>
+                            <p class="text-muted">
+                                {{user.address}}
+                                <br ng-show="user.address"> {{user.state}}
+                                 <br ng-show="user.state"> 
+                                <span class="text-muted">{{user.phone}}</span>
+                                <br ng-show="user.phone"> role: {{user.role}}
+                            </p>
+                        </div>
+                        <a ng-click="admin.delete(user.name, user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<footer></footer>

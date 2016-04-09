@@ -33,6 +33,14 @@
             </div>
             <div class="row">
                 <div class="col-xs-6">
+                    <address>
+                        <strong>Delivery Status:</strong>
+                        <br>
+                        <span ng-show="invoice.delivered">Delivered</span>
+                        <span ng-hide="invoice.delivered">Pending</span>
+                        <br>
+                        <br>
+                    </address>
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>

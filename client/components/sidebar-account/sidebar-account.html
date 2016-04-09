@@ -1,0 +1,28 @@
+<div class="cat-menu">
+    <ul id="category">
+        <li class="cat-title" ui-sref-active="active">
+            <a href="#">My account</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="manage-categories">Manage categories</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="manage-products">Manage products</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="manage-requests">Manage Requests</a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="orders">Orders</a>
+        </li>
+        <li ui-sref-active="active" ng-hide="isAdmin">
+            <a ui-sref="orders">Submit a request</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin">
+            <a ui-sref="admin">Users</a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="settings">Change Password</a>
+        </li>
+    </ul>
+</div>

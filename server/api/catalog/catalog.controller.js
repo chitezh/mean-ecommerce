@@ -61,7 +61,7 @@ function removeEntity(res) {
 
 // Gets a list of Catalogs
 exports.index = function(req, res) {
-  Catalog.find().sort({ _id: 1 }).execAsync()
+  Catalog.find().sort({ parent: 1 }).populate('parent').execAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 };
@@ -81,8 +81,16 @@ exports.show = function(req, res) {
 
 // Creates a new Catalog in the DB
 exports.create = function(req, res) {
-  Catalog.createAsync(req.body)
-    .then(responseWithResult(res, 201))
+  Catalog.findByIdAsync(req.body.parent)
+    .then(function(parent) {
+      console.log(parent)
+      if (parent) {
+        delete req.body.parent;
+        return parent.addChild(req.body);
+      }
+      return Catalog.createAsync(req.body);
+    })
+    .then(responseWithResult(res))
     .catch(handleError(res));
 };
 

@@ -5,7 +5,7 @@
             <div class="col-md-7 col-md-offset-3">
                 <ul class="breadcrumb">
                     <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
-                    <li class="active">my orders</li>
+                    <li class="active">orders</li>
                 </ul>
             </div>
         </div>
@@ -15,19 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3">
-                <div class="cat-menu">
-                    <ul id="category">
-                        <li class="cat-title" ui-sref-active="active">
-                            <a href="#">My account</a>
-                        </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="orders">My orders</a>
-                        </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="settings">Change Password</a>
-                        </li>
-                    </ul>
-                </div>
+                <sidebar-account></sidebar-account>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="alert alert-warning" role="alert" ng-show="orders.length === 0">
@@ -41,20 +29,29 @@
                                 <td>Order Number</td>
                                 <td>Customer Name</td>
                                 <td>Telephone</td>
+                                <td>Delivery Status</td>
                                 <td>Created on</td>
                                 <td>Total</td>
-                                <td>&nbsp;</td>
+                                <td class="text-center" colspan="2">Actions</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="o in orders" ng-click="$state.go('invoice', {id: o._id});">
+                            <tr ng-repeat="o in orders" class="table-col">
                                 <td>{{$index + 1}}</td>
                                 <td>{{o.orderNumber}}</td>
                                 <td>{{o.customerName}}</td>
                                 <td>{{o.customerPhone}}</td>
+                                <td>
+                                    <span ng-show="o.delivered">Delivered</span>
+                                    <span ng-hide="o.delivered">Pending</span>
+                                </td>
                                 <td>{{o.created | date}}</td>
                                 <td>₦{{o.totalCost}}</td>
-                                <td><a ui-sref="invoice({id: o._id})">View <span class="glyphicon glyphicon-eye-open"></span></a></td>
+                                <td>
+                                    <a ui-sref="invoice({id: o._id})" class="btn btn-primary"> <span class="glyphicon glyphicon-eye-open"></span></a>
+                                </td>
+                                <td ng-show="isAdmin"> <a ng-click=" deliverOrder('Order ' + '#' + o.orderNumber, o)" class="yellow"><span class="fa fa-truck fa-2x"></span></a></td>
+                                <td ng-show="isAdmin"> <a ng-click="deleteOrder('Order ' + '#' + o.orderNumber, o)" class="trash"><span class="fa fa-trash fa-2x"></span></a></td>
                             </tr>
                         </tbody>
                     </table>

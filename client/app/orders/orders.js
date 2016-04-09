@@ -5,7 +5,7 @@ angular.module('bhcmartApp')
     $stateProvider
       .state('orders', {
         url: '/orders',
-        templateUrl: 'app/account/orders/orders.html',
+        templateUrl: 'app/orders/orders.html',
         controller: 'OrdersCtrl',
         authenticate: true
       });

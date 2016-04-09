@@ -1,6 +1,8 @@
 'use strict';
 
 angular.module('bhcmartApp')
-  .controller('CartCtrl', function ($scope) {
-    $scope.message = 'Hello';
+  .controller('CartCtrl', function($scope, Modal, ngCart) {
+    $scope.clearCart = Modal.confirm.delete(function() {
+      ngCart.empty()
+  });
   });

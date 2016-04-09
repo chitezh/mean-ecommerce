@@ -19,6 +19,11 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   display: flex;
 }
 
+.table-col td {
+    line-height: 25px !important;
+}
+
+
 .product-grid ul#category {
 	margin-top: -102px !important;
 	position: initial !important;
@@ -28,7 +33,6 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 // Component styles are injected through grunt
 // injector
 @import 'about/about.scss';
-@import 'account/orders/orders.scss';
 @import 'admin/admin.scss';
 @import 'cart/cart.scss';
 @import 'category/category.scss';
@@ -36,9 +40,14 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'contact/contact.scss';
 @import 'invoice/invoice.scss';
 @import 'main/main.scss';
+@import 'manage-categories/manage-categories.scss';
+@import 'manage-products/manage-products.scss';
+@import 'manage-requests/manage-requests.scss';
+@import 'orders/orders.scss';
 @import 'product/product.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
+@import '../components/sidebar-account/sidebar-account.scss';
 @import '../components/sidebar-cat/sidebar-cat.scss';
 // endinjector

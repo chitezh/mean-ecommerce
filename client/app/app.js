@@ -10,8 +10,8 @@ angular.module('bhcmartApp', [
     'ngSanitize',
     'btford.socket-io',
     'ui.router',
-    'ui.bootstrap',
-    'validation.match'
+    'validation.match',
+    'ui.bootstrap'
   ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

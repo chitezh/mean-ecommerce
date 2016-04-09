@@ -1,0 +1,58 @@
+<navbar></navbar>
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <ul class="breadcrumb">
+                    <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active">manage-categories</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="product-grid" style="min-height: 200px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <sidebar-account></sidebar-account>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="alert alert-warning" role="alert" ng-show="orders.length === 0">
+                    You do not have any category
+                </div>
+                <div class="table-responsive" ng-hide="orders.length === 0">
+                    <table class="table table-striped" ng-hide="orders.length === 0">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Parent</td>
+                                <td class="text-center" colspan="3">Actions</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="c in filtered = categories | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage" class="order-col">
+                                <td>{{c.name}}</td>
+                                <td>{{c.parent.name ? c.parent.name : "none" }}</td>
+                                <td>
+                                    <a ui-sref="products({slug: c.slug})" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-eye-open"></span></a>
+                                </td>
+                                <td ng-show="isAdmin">
+                                    <a ui-sref=" add-category" class="btn btn-xs btn-success"><span class="fa fa-plus fa-2x"></span></a>
+                                </td>
+                                <td ng-show="isAdmin">
+                                    <a ui-sref=" edit-category({id: c.slug})" class=""><span class="fa fa-edit fa-2x"></span></a>
+                                </td>
+                                <td ng-show="isAdmin">
+                                    <a ng-click="deleteCatalog('Category ' + c.name, c)" class="trash"><span class="fa fa-trash fa-2x">                                </span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+            </div>
+        </div>
+    </div>
+</section>
+<footer></footer>
