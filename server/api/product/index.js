@@ -18,7 +18,7 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.get('/:slug/catalog/:limit', controller.catalog);
-router.get('/:term/search', controller.search);
+router.get('/:slug/search/:term', controller.search);
 
 //image
 router.post('/:id/images', multiparty(uploadOptions), controller.uploadImage);

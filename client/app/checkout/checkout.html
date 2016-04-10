@@ -203,23 +203,23 @@
                                         <tbody>
                                             <tr ng-repeat="item in ngCart.getCart().items track by $index">
                                                 <td class="p-name">{{item.getName()}}</td>
-                                                <td class="p-amount text-center"><span class="amount">₦{{item.getPrice()}}</span></td>
+                                                <td class="p-amount text-center"><span class="amount">₦{{item.getPrice() | number:2}}</span></td>
                                                 <td class="p-quantity text-center">{{item.getQuantity()}}</td>
-                                                <td class="p-total">₦{{item.getTotal()}}</td>
+                                                <td class="p-total">₦{{item.getTotal() | number:2}}</td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <td colspan="3" class="text-right">Subtotal</td>
-                                                <td class="p-amount">₦{{ ngCart.getSubTotal()}}</td>
+                                                <td class="p-amount">₦{{ ngCart.getSubTotal() | number:2}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" class="text-right">Tax(5%)</td>
-                                                <td class="p-amount">₦{{ ngCart.getTax()}}</td>
+                                                <td class="p-amount">₦{{ ngCart.getTax() | number:2}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" class="text-right">Grand Total</td>
-                                                <td class="p-total">₦{{ ngCart.totalCost()}}</td>
+                                                <td class="p-total">₦{{ ngCart.totalCost() | number:2}}</td>
                                             </tr>
                                         </tfoot>
                                     </table>

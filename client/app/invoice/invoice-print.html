@@ -75,27 +75,27 @@
                             <tbody>
                                 <tr ng-repeat="item in invoice.items">
                                     <td>{{item.name}}</td>
-                                    <td class="text-left">₦{{item.price}}</td>
+                                    <td class="text-left">₦{{item.price | number:2}}</td>
                                     <td class="text-center">{{item.quantity}}</td>
-                                    <td class="text-right">₦{{item.total}}</td>
+                                    <td class="text-right">₦{{item.total | number:2}}</td>
                                 </tr>
                                 <tr>
                                     <td class="thick-line"></td>
                                     <td class="thick-line"></td>
                                     <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                    <td class="thick-line text-right">₦{{invoice.subTotal}}</td>
+                                    <td class="thick-line text-right">₦{{invoice.subTotal | number:2}}</td>
                                 </tr>
                                 <tr>
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line text-center"><strong>Tax</strong></td>
-                                    <td class="no-line text-right">₦{{invoice.tax}}</td>
+                                    <td class="no-line text-right">₦{{invoice.tax | number:2}}</td>
                                 </tr>
                                 <tr>
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line text-center"><strong>Total</strong></td>
-                                    <td class="no-line text-right">₦{{invoice.totalCost}}</td>
+                                    <td class="no-line text-right">₦{{invoice.totalCost | number:2}}</td>
                                 </tr>
                             </tbody>
                         </table>

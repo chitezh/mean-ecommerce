@@ -11,7 +11,8 @@ autoIncrement.initialize(mongoose.createConnection(config.mongo.uri));
 var RequestItemSchema = new Schema({
   description: String,
   price: Number,
-  quantity: Number
+  quantity: Number,
+  total: Number
 });
 
 var RequestSchema = new Schema({
@@ -28,6 +29,9 @@ var RequestSchema = new Schema({
   customerCity: String,
   customerState: String,
   customerCountry: String,
+  listSubTotal: Number,
+  listCharge: Number,
+  listTotal: Number,
   processed: {
     type: Boolean,
     default: false

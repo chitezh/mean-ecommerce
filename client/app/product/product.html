@@ -57,7 +57,7 @@
                             <div class="product-right-details">
                                 <div class="product-info">
                                     <h4>{{product.title}}</h4>
-                                    <h5>₦{{product.price}}</h5>
+                                    <h5>₦{{product.price | number}}</h5>
                                     <div class="rating">
                                         <i class="fa fa-star" ng-class="{'grey': product.averageRating < 1}"></i>
                                         <i class="fa fa-star" ng-class="{'grey': product.averageRating < 2}"></i>
@@ -245,7 +245,7 @@
                                             <i class="fa fa-star" ng-class="{'grey': upsell.averageRating < 4}"></i>
                                             <i class="fa fa-star" ng-class="{'grey': upsell.averageRating < 5}"></i>
                                         </div>
-                                        <h5>₦{{upsell.price}}</h5>
+                                        <h5>₦{{upsell.price | number}}</h5>
                                         <button ng-show="!ngCart.getItemById(upsell._id)" ng-click="ngCart.addItem(upsell._id, upsell.title, upsell.price, qty, upsell)" class="n-a-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                                         <a ng-show="ngCart.getItemById(upsell._id)" class="btn btn-success btn-sm n-a-btn" ng-click="ngCart.removeItemById(upsell._id)"><i class="fa fa-check"></i> ADDED</a>
                                     </div>
@@ -266,7 +266,7 @@
                         </div>
                         <div class="product-info">
                             <h4><a ui-sref="product({id: p.slug})">{{p.title}}</a></h4>
-                            <h5>₦{{p.price}}</h5>
+                            <h5>₦{{p.price | number}}</h5>
                             <div class="rating">
                                 <i class="fa fa-star" ng-class="{'grey': p.averageRating < 1}"></i>
                                 <i class="fa fa-star" ng-class="{'grey': p.averageRating < 2}"></i>

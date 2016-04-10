@@ -26,7 +26,6 @@ angular.module('bhcmartApp')
         isArray: true,
         params: {
           controller: 'search',
-          limit: 100
         }
       },
       'review': {

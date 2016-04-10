@@ -42,7 +42,7 @@ angular.module('bhcmartApp')
   .controller('SubmitRequestCtrl', ['$scope', 'Modal', 'Request', 'Auth', '$state',
     function($scope, Modal, Request, Auth, $state) {
 
-      $scope.items = [];
+      $scope.items = [], $scope.listSubTotal = 0, $scope.listCharge = 0, $scope.listTotal = 0;
 
       $scope.user = Auth.getCurrentUser() || {};
       $scope.isLoggedIn = Auth.isLoggedIn();
@@ -81,10 +81,16 @@ angular.module('bhcmartApp')
           $scope.message = 'Please, fill the empty fields';
           return;
         }
-
+        newItem.total = newItem.price * newItem.quantity;
         $scope.items.push(newItem);
+
+        $scope.listSubTotal = _.reduce($scope.items, (a, b) => a + b.total, 0);
+        $scope.listCharge = 0.10 * $scope.listSubTotal;
+        $scope.listTotal = $scope.listSubTotal + $scope.listCharge;
         $scope.newItem = {};
       }
+
+
 
       $scope.removeFromList = function(index) {
         $scope.items.splice(index, 1);
@@ -94,6 +100,10 @@ angular.module('bhcmartApp')
         if (user.name && user.email && user.phone && user.address && user.city && user.country) {
           let list = {};
           list.items = items;
+          
+          list.listSubTotal = $scope.listSubTotal;
+          list.listCharge = $scope.listCharge;
+          list.listTotal = $scope.listTotal;
 
           list = _.extend(list, {
             customerId: user._id ? user._id : '',

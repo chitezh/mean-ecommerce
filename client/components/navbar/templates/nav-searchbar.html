@@ -13,7 +13,7 @@
                                 </select>
                             </div>
                         </div>
-                        <input type="search" placeholder="What do you want to search  . ." name="term" />
+                        <input type="search" placeholder="What do you want to search  . ." name="term" required/>
                         <button type="submit"><i class="fa fa-search"></i>Search</button>
                     </form>
                 </div>
@@ -21,7 +21,7 @@
             <div class="col-lg-2 col-md-2 col-sm-12">
                 <div class="header-right-menu">
                     <ul class="header-r-cart">
-                        <li><a class="cart" ui-sref="cart"><i class="fa fa-shopping-cart"></i>Cart : ₦{{ ngCart.totalCost() }}<span>{{ ngCart.getTotalItems() }}</span></a>
+                        <li><a class="cart" ui-sref="cart"><i class="fa fa-shopping-cart"></i>Cart : ₦{{ ngCart.totalCost() | number:2}}<span>{{ ngCart.getTotalItems() }}</span></a>
                             <div class="mini-cart-content">
                                 <div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
                                     Your cart is empty
@@ -33,15 +33,15 @@
                                         </div>
                                         <div class="cart-info">
                                             <a ui-sref="product({id: item.getId()})"><h4>{{ item.getName() }}</h4></a>
-                                            <h5>₦{{ item.getPrice()}}</h5><span class="quantity"><i class="fa fa-times"></i>&nbsp;&nbsp;{{ item.getQuantity() | number }}&nbsp;&nbsp;</span>
+                                            <h5>₦{{ item.getPrice() | number:2}}</h5><span class="quantity"><i class="fa fa-times"></i>&nbsp;&nbsp;{{ item.getQuantity() | number }}&nbsp;&nbsp;</span>
                                         </div>
                                         <div class="product-cancel"><a href="#" ng-click="ngCart.removeItemById(item.getId())"><i class="fa fa-times"></i></a>
                                         </div>
                                     </div>
                                     <div class="mini-bottom-sec">
-                                        <p class="total-amount">Tax: <span>₦{{ ngCart.getTax()}}</span></p>
+                                        <p class="total-amount">Tax: <span>₦{{ ngCart.getTax() | number:2}}</span></p>
                                         <!-- <p class="total-amount">Shipping: <span>₦{{ ngCart.getShipping()}}</span></p> -->
-                                        <p class="total-amount">Total: <span>₦{{ ngCart.totalCost()}}</span></p>
+                                        <p class="total-amount">Total: <span>₦{{ ngCart.totalCost() | number:2}}</span></p>
                                         <div class="button"><a ui-sref="checkout">CHECKOUT</a></div>
                                         <div class="button"><a ui-sref="cart">View Cart</a></div>
                                     </div>

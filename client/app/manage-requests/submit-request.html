@@ -193,17 +193,19 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th class="pull-left" colspan="1">Product Description</th>
-                                                <th class="p-amount" colspan="1">Suggested Price</th>
-                                                <th class="p-amount" colspan="1">Qty</th>
-                                                <th class="p-amount" colspan="1">&nbsp;</th>
+                                                <th class="pull-left col-md-6">Product Description</th>
+                                                <th class="p-amount">Suggested Price</th>
+                                                <th class="p-amount">Qty</th>
+                                                <th class="p-total">SubTotal</th>
+                                                <th class="p-amount">&nbsp;</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in items track by $index">
                                                 <td class="p-name">{{item.description}}</td>
-                                                <td class="p-amount text-center"><span class="amount">₦{{item.price}}</span></td>
+                                                <td class="p-amount text-center"><span class="amount">₦{{item.price | number:2}}</span></td>
                                                 <td class="p-amount text-center">{{item.quantity}}</td>
+                                                <td class="p-total">₦{{item.total | number:2}}</td> 
                                                 <td>
                                                     <div>
                                                         <button class="btn btn-sm btn-danger" ng-click="removeFromList($index)"><span class="fa fa-close fa-2x"></span>
@@ -222,6 +224,9 @@
                                                     <input type="number" class="form-control" ng-model="newItem.quantity" required/>
                                                 </td>
                                                 <td>
+                                                    <input type="number" class="form-control" ng-value="newItem.quantity * newItem.price" disabled />
+                                                </td>
+                                                <td>
                                                     <div>
                                                         <button class="btn btn-sm btn-success" ng-click="addToList(newItem)"><span class="fa fa-plus fa-2x"></span>
                                                         </button>
@@ -229,6 +234,21 @@
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        <tfoot ng-hide="items.length == 0">
+                                            <tr>
+                                                <td colspan="3" class="text-right">Subtotal</td>
+                                                <td class="p-amount">₦{{listSubTotal | number:2}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="text-right">Delivery/Service Charge(10%)</td>
+                                                <td class="p-amount">₦{{ listCharge | number:2}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="text-right">Grand Total</td>
+                                                <td class="p-total">₦{{listTotal | number:2}}</td>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                     <div class="checkout-buttons">
                                         <button class="login-btn" ng-hide="items.length == 0" ng-click="submitList(items, user)">Submit List</button>

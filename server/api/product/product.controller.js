@@ -91,7 +91,37 @@ function productsInCategory(limit) {
       .populate({ path: 'categories', select: 'name' })
       .populate({ path: 'reviews', select: 'rating' })
       .populate({ path: 'images', select: 'imageUrl' })
-      .exec();
+      .execAsync();
+  }
+}
+
+function productsInSearchCategory(term) {
+  return function(catalog) {
+    var catalog_ids = [catalog._id].concat(catalog.children);
+    var option;
+
+    if (catalog.slug == 'all')
+      option = {
+        $text: {
+          $search: term
+        }
+      };
+    else
+      option = {
+        'categories': {
+          $in: catalog_ids
+        },
+        $text: {
+          $search: term
+        }
+      };
+
+    return Product
+      .find(option)
+      .populate({ path: 'categories', select: 'name' })
+      .populate({ path: 'reviews', select: 'rating' })
+      .populate({ path: 'images', select: 'imageUrl' })
+      .execAsync();
   }
 }
 
@@ -173,14 +203,13 @@ exports.catalog = function(req, res) {
 };
 
 exports.search = function(req, res) {
-  Product
-    .find({
-      $text: {
-        $search: req.params.term
-      }
+  var term = req.params.term;
+  Catalog
+    .findOne({
+      slug: req.params.slug
     })
-    .populate('categories')
     .execAsync()
+    .then(productsInSearchCategory(term))
     .then(responseWithResult(res))
     .catch(handleError(res));
 };

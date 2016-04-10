@@ -47,7 +47,7 @@
                         <tbody>
                             <tr ng-repeat="p in filtered = products | filter: search | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage" class="order-col">
                                 <td>{{p.title}}</td>
-                                <td>₦{{p.price}}</td>
+                                <td>₦{{p.price | number}}</td>
                                 <td>{{p.stock}}</td>
                                 <td><span ng-repeat="cat in p.categories">{{cat.name}}{{p.categories.length - 1 > $index ? ',&nbsp;' : ''}}</span></td>
                                 <td>
