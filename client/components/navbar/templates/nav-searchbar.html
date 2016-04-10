@@ -4,16 +4,16 @@
         <div class="row">
             <div class="col-lg-7 col-lg-offset-3 col-md-7 col-md-offset-3 hidden-xs">
                 <div class="search-form">
-                    <form id="search-form" action="#">
+                    <form id="search-form" action="search">
                         <div class="categories">
                             <div class="box-search-select">
                                 <select class="selects" name="category">
-                                    <option value="">All Categories</option>
+                                    <option value="all">All Categories</option>
                                     <option ng-repeat="category in nav.parentCategories" value="{{category.slug}}">{{category.name | limitTo:15}}</option>
                                 </select>
                             </div>
                         </div>
-                        <input type="search" placeholder="What do you want to search  . ." name="s" />
+                        <input type="search" placeholder="What do you want to search  . ." name="term" />
                         <button type="submit"><i class="fa fa-search"></i>Search</button>
                     </form>
                 </div>
@@ -76,6 +76,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li ui-sref-active="active"><a class="btn text-primary" ui-sref="submit-request">Submit Food List</a></li>
                             <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
                             <li>
                                 <a href="#">
@@ -86,7 +87,19 @@
                                 <ul>
                                     <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Register</a></li>
                                     <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-                                    <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="orders"><span class="glyphicon glyphicon-tasks"></span> My Orders</a></li>
+                                    <li ui-sref-active="active" ng-show="nav.isAdmin">
+                                        <a ui-sref="manage-categories">Manage categories</a>
+                                    </li>
+                                    <li ui-sref-active="active" ng-show="nav.isAdmin">
+                                        <a ui-sref="manage-products">Manage products</a>
+                                    </li>
+                                    <li ui-sref-active="active" ng-show="nav.isAdmin">
+                                        <a ui-sref="manage-requests">Requests</a>
+                                    </li>
+                                    <li ui-sref-active="active" ng-show="nav.isAdmin">
+                                        <a ui-sref="admin">Users</a>
+                                    </li>
+                                    <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="orders"><span class="glyphicon glyphicon-tasks"></span>Orders</a></li>
                                     <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Change password </a></li>
                                     <li ng-show="nav.isLoggedIn()"><a ui-sref="logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
                                 </ul>

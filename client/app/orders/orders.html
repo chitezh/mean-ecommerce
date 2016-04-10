@@ -18,11 +18,20 @@
                 <sidebar-account></sidebar-account>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <div class="alert alert-warning" role="alert" ng-show="orders.length === 0">
+                <div class="alert alert-warning" role="alert" ng-show="filtered.length === 0">
                     You do not have any order
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-striped" ng-hide="orders.length === 0">
+                    <div class="row">
+                        <div class="input-group primary col-md-6" inputgroup>
+                            <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control search-page-input" placeholder="Search order" ng-model="search">
+                        </div>
+                    </div>
+                    <table class="table table-striped" ng-hide="filtered.length === 0">
                         <thead>
                             <tr>
                                 <td>#</td>
@@ -36,7 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="o in orders" class="table-col">
+                            <tr ng-repeat="o in filtered = orders | filter:search  | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage" class="table-col">
                                 <td>{{$index + 1}}</td>
                                 <td>{{o.orderNumber}}</td>
                                 <td>{{o.customerName}}</td>
@@ -56,6 +65,7 @@
                         </tbody>
                     </table>
                 </div>
+                <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
             </div>
         </div>
     </div>

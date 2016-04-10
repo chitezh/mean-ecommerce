@@ -22,6 +22,18 @@
                     You do not have any category
                 </div>
                 <div class="table-responsive" ng-hide="categories.length === 0">
+                    <div class="row">
+                        <div ng-show="isAdmin" class="col-md-6 pull-right">
+                            <a ui-sref=" add-category" class="btn btn-xs btn-success pull-right"><span class="fa fa-plus fa-2x"></span></a>
+                        </div>
+                        <div class="input-group primary col-md-6" inputgroup>
+                            <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control search-page-input" placeholder="Search category" ng-model="search">
+                        </div>
+                    </div>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -31,15 +43,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="c in filtered = categories | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage" class="order-col">
+                            <tr ng-repeat="c in filtered = categories | filter: search | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage" class="order-col">
                                 <td>{{c.name}}</td>
                                 <td>{{c.parent.name ? c.parent.name : "none" }}</td>
                                 <td>
                                     <a ui-sref="products({slug: c.slug})" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-eye-open"></span></a>
                                 </td>
-                                <td ng-show="isAdmin">
+                               <!--  <td ng-show="isAdmin">
                                     <a ui-sref=" add-category" class="btn btn-xs btn-success"><span class="fa fa-plus fa-2x"></span></a>
-                                </td>
+                                </td> -->
                                 <td ng-show="isAdmin">
                                     <a ui-sref=" edit-category({id: c.slug})" class=""><span class="fa fa-edit fa-2x"></span></a>
                                 </td>

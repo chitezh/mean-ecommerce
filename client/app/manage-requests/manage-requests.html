@@ -18,10 +18,19 @@
                 <sidebar-account></sidebar-account>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <div class="alert alert-warning" role="alert" ng-show="requests.length === 0">
+                <div class="alert alert-warning" role="alert" ng-show="filtered.length === 0">
                     You do not have any request
                 </div>
-                <div class="table-responsive" ng-hide="requests.length === 0">
+                <div class="table-responsive" ng-hide="filtered.length === 0">
+                    <div class="row">
+                        <div class="input-group primary col-md-6" inputgroup>
+                            <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control search-page-input" placeholder="Search request list" ng-model="search">
+                        </div>
+                    </div>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -31,11 +40,11 @@
                                 <td>Telephone</td>
                                 <td>Status</td>
                                 <td>Submitted on</td>
-                                <td class="text-center" colspan="2">Actions</td>
+                                <td class="text-center" colspan="3">Actions</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="o in requests" class="table-col">
+                            <tr ng-repeat="o in  filtered = requests | filter:search  | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage" class="table-col">
                                 <td>{{$index + 1}}</td>
                                 <td>{{o.requestNumber}}</td>
                                 <td>{{o.customerName}}</td>
@@ -46,15 +55,15 @@
                                 </td>
                                 <td>{{o.created | date}}</td>
                                 <td>
-
                                     <a ui-sref="view-request({id: o._id})" class="btn btn-primary"> <span class="glyphicon glyphicon-eye-open"></span></a>
                                 </td>
-                                <td ng-show="isAdmin"> <a ng-click=" deliverRequest('Request ' + '#' + o.requestNumber, o)" class="yellow"><span class="fa fa-key fa-2x"></span></a></td>
+                                <td ng-show="isAdmin"> <a ng-click=" deliverRequest('Request ' + '#' + o.requestNumber, o)" class="yellow"><span class="fa fa-rocket fa-2x"></span></a></td>
                                 <td ng-show="isAdmin"> <a ng-click="deleteRequest('Request ' + '#' + o.requestNumber, o)" class="trash"><span class="fa fa-trash fa-2x"></span></a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
             </div>
         </div>
     </div>

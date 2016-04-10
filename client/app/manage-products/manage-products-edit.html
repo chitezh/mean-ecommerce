@@ -36,20 +36,21 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label>Price(₦)</label>
-                            <input type="text" name="price" class="form-control" ng-model="product.price" required/>
+                            <input type="number" name="price" class="form-control" ng-model="product.price" required/>
                             <p class="help-block" ng-show="form.price.$error.required">
                                 Price is required
                             </p>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Stock</label>
-                            <input type="text" name="stock" class="form-control" ng-model="product.stock" required/>
+                            <input type="number" name="stock" class="form-control" ng-model="product.stock" required/>
                             <p class="help-block" ng-show="form.stock.$error.required">
                                 Stock is required
                             </p>
                         </div>
                     </div>
-                    <div class="form-group" <label>Categories</label>
+                    <div class="form-group">
+                        <label>Categories</label>
                         <select class="form-control" name="categories" ng-model="product.categories" data-live-search="true">
                             <option ng-repeat="cat in categories" value="{{cat._id}}" ng-selected="{{_.size(_.findWhere(product.categories, {_id: cat._id})) > 0}}">{{cat.name}}</option>
                         </select>

@@ -7,9 +7,23 @@ angular.module('bhcmartApp')
     $scope.requests = [];
 
     if ($scope.isAdmin)
-      $scope.requests = Request.query();
+      Request.query(function(requests) {
+        $scope.requests = requests
+          // pagination controls
+        $scope.currentPage = 1;
+        $scope.totalItems = $scope.requests.length;
+        $scope.itemsPerPage = 10; // items per page
+        $scope.noOfPages = Math.ceil($scope.totalItems / $scope.itemsPerPage);
+      });
     else
-      $scope.requests = Request.myRequests({ id: user._id });
+      Request.myRequests({ id: user._id }, function(requests) {
+        $scope.requests = requests
+          // pagination controls
+        $scope.currentPage = 1;
+        $scope.totalItems = $scope.requests.length;
+        $scope.itemsPerPage = 10; // items per page
+        $scope.noOfPages = Math.ceil($scope.totalItems / $scope.itemsPerPage);
+      });
 
     $scope.deleteRequest = Modal.confirm.delete(function(o) {
       o.$remove(o._id, function(resp) {
@@ -97,7 +111,7 @@ angular.module('bhcmartApp')
           Request.save(list,
             function(resp) {
               console.log(resp)
-              $state.go('view-request', { id: o._id });
+              $state.go('view-request', { id: resp._id });
             },
             function(err) {
               console.log(err)

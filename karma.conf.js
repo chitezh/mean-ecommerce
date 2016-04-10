@@ -31,6 +31,8 @@ module.exports = function(config) {
       'client/bower_components/angular-validation-match/dist/angular-validation-match.min.js',
       'client/bower_components/ngCart/dist/ngCart.js',
       'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'client/bower_components/ng-file-upload/ng-file-upload.js',
+      'client/bower_components/bootstrap-select/dist/js/bootstrap-select.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

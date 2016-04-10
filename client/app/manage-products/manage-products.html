@@ -22,12 +22,17 @@
                     You do not have any product
                 </div>
                 <div class="table-responsive" ng-hide="filtered.length === 0">
-                    <div class="input-group primary col-md-6" inputgroup>
-                        <span class="input-group-addon">
+                    <div class="row">
+                        <div ng-show="isAdmin" class="col-md-6 pull-right">
+                            <a ui-sref="add-product" class="btn btn-xs btn-success pull-right"><span class="fa fa-plus fa-2x"></span></a>
+                        </div>
+                        <div class="input-group primary col-md-6" inputgroup>
+                            <span class="input-group-addon">
                             <span class="arrow"></span>
-                        <i class="fa fa-search"></i>
-                        </span>
-                        <input type="text" class="form-control search-page-input" placeholder="Search Product" ng-model="search">
+                            <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control search-page-input" placeholder="Search Product" ng-model="search">
+                        </div>
                     </div>
                     <table class="table table-striped">
                         <thead>
@@ -48,9 +53,9 @@
                                 <td>
                                     <a ui-sref="product({id: p.slug})" class="btn btn-sm btn-primary"> <span class="glyphicon glyphicon-eye-open"></span></a>
                                 </td>
-                                <td ng-show="isAdmin">
+                               <!--  <td ng-show="isAdmin">
                                     <a ui-sref="add-product" class="btn btn-xs btn-success"><span class="fa fa-plus fa-2x"></span></a>
-                                </td>
+                                </td> -->
                                 <td ng-show="isAdmin">
                                     <a ui-sref=" edit-product({id: p.slug})" class=""><span class="fa fa-edit fa-2x"></span></a>
                                 </td>
