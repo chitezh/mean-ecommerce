@@ -21,7 +21,7 @@
                 <!-- category sidebar -->
                 <sidebar-cat></sidebar-cat>
                 <div class="p-widget-title top-title">
-                  <!--   <div class="left-sidebar-title">
+                    <!--   <div class="left-sidebar-title">
                         <h3>Shop by</h3>
                     </div> -->
                 </div>
@@ -88,7 +88,7 @@
                     <!-- <div ng-include="'app/category/product-list.html'"></div> -->
                     <div role="tabpanel" class="tab-pane active" id="grid">
                         <div class="row">
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" ng-repeat="product in products">
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" ng-repeat="product in filtered = products  | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage">
                                 <div class="single-product">
                                     <a ui-sref="product({id: product.slug})">
                                         <img class="primary-img" src="{{product.imageUrl}}" alt="">
@@ -113,11 +113,12 @@
                                 </div>
                             </div>
                         </div>
+                        <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="list">
                         <div class="row product-list">
                             <div class="col-md-12">
-                                <div class="single-product" ng-repeat="product in products">
+                                <div class="single-product" ng-repeat="product in filtered = products  | startSearchFrom:(currentPage-1) * itemsPerPage | limitTo:itemsPerPage">
                                     <a ui-sref="product({id: product.slug})">
                                         <img class="primary-img" src="{{product.imageUrl}}" alt="">
                                         <i class="fa fa-expand"></i>
@@ -140,6 +141,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
                         </div>
                     </div>
                     <!--       <div class="row">

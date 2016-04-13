@@ -21,7 +21,7 @@
         <li ui-sref-active="active" ng-show="isAdmin">
             <a ui-sref="admin">Users</a>
         </li>
-        <li ui-sref-active="active">
+        <li ng-show="isLoggedIn" ui-sref-active="active">
             <a ui-sref="settings">Change Password</a>
         </li>
     </ul>
