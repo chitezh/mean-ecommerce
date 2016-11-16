@@ -6,6 +6,9 @@ eCommerce site built with the MEAN stack - https://bhcmart.herokuapp.com/
 
 This is a starter project if you intend building an eCommerce platform on MEAN(Mongo, Express, Angular, Node).  [Socket](https://socket.io) was used to achieve a realtime updates in prices and quantities of products.
 
+Admin User: admin@bhcmart.com
+Password: 123456
+
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
