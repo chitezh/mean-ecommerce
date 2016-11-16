@@ -1,8 +1,10 @@
-# source
+# Summary
 
-Bhcmart ecommerce site
+eCommerce site built with the MEAN stack - https://bhcmart.herokuapp.com/
 
-## Getting Started
+## Description
+
+This is a starter project if you intend building an eCommerce platform on MEAN(Mongo, Express, Angular, Node).  [Socket](https://socket.io) was used to achieve a realtime updates in prices and quantities of products.
 
 ### Prerequisites
 
@@ -33,4 +35,3 @@ Running `npm test` will run the unit tests with karma.
 
 ## Production
 Running `grunt serve:dist` previews the application in production mode
-
